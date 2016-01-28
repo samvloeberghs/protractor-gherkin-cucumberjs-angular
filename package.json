@@ -52,9 +52,12 @@
     "zone.js": "0.5.10"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
     "compression-webpack-plugin": "^0.3.0",
     "copy-webpack-plugin": "^1.1.1",
     "css-loader": "^0.23.0",
+    "cucumber": "^0.9.4",
     "es6-promise-loader": "^1.0.1",
     "exports-loader": "^0.6.2",
     "expose-loader": "^0.7.1",
@@ -76,6 +79,7 @@
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
     "protractor": "^3.0.0",
+    "protractor-cucumber-framework": "^0.3.3",
     "raw-loader": "0.5.1",
     "reflect-metadata": "0.1.2",
     "remap-istanbul": "^0.5.1",

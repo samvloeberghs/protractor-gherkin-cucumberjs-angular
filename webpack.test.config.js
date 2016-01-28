@@ -15,7 +15,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 module.exports = {
   resolve: {
     cache: false,
-    extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
+    extensions: prepend(['.ts','.js','.json','.css','.scss','.html'], '.async') // ensure .async.ts etc also works
   },
   devtool: 'inline-source-map',
   module: {
@@ -54,7 +54,12 @@ module.exports = {
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html$/, loader: 'raw-loader' },
-      { test: /\.css$/,  loader: 'raw-loader' }
+      { test: /\.css$/,  loader: 'raw-loader' },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: 'raw-loader!sass-loader'
+      },
     ],
     postLoaders: [
       // instrument only testing sources with Istanbul

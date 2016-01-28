@@ -58,3 +58,6 @@ Thumbs.db
 # IDE #
 .idea/
 *.swp
+
+test/e2e/features/otherExample.feature
+test/e2e/features/otherExampleBis.feature

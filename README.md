@@ -24,3 +24,20 @@ npm start
 # run the tests
 npm run ci
 ```
+
+## CucumberJS
+
+Cucumber.js is a Cucumber implementation written in pure JavaScript. It runs on Node.js, IO.js, browsers and any other JavaScript platform.
+
+More info: 
+- https://cucumber.io/docs/reference/javascript
+- https://github.com/cucumber/cucumber-js
+
+## Gherkin scenarios
+
+Gherkin is the language that Cucumber understands. It is a Business Readable, Domain Specific Language that lets you describe software’s behaviour without detailing how that behaviour is implemented.
+
+Gherkin serves two purposes — documentation and automated tests. The third is a bonus feature — when it yells in red it’s talking to you, telling you what code you should write.
+
+More info:
+- https://github.com/cucumber/cucumber/wiki/Gherkin

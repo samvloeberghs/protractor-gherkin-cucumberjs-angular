@@ -1,7 +1,7 @@
-var TestCalculatorPage = require('../pages/testCalculator_page.js');
-
 function World() {
-  this.testCalculatorPage = new TestCalculatorPage();
+  this.helper = function(){
+    console.log('help me..');
+  };
 }
 
 module.exports = function() {

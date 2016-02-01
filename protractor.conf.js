@@ -8,7 +8,7 @@ exports.config = {
   ],
   cucumberOpts: {
     require: [
-      'test/e2e/features/steps/*_steps.js',
+      'test/e2e/features/steps/*.steps.js',
       'test/e2e/features/support/*.js'
     ],
     format: 'pretty'

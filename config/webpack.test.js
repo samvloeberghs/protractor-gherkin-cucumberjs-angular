@@ -135,6 +135,35 @@ module.exports = {
         exclude: [helpers.root('src/index.html')],
       },
 
+      // Support for SCSS
+      // To string loader support for *.scss files
+      // Css loader support for *.scss files
+      // Post css loader for *.scss files
+      // Sass loader for *.scss files
+      // Returns file content as string
+      {
+        test: /\.scss$/,
+        exclude: helpers.root('node_modules'),
+        loader: 'to-string!css-loader?-url!postcss-loader!sass-loader'
+      },
+
+      {
+        test: /\.png$/,
+        loader: "url-loader?limit=100000",
+        exclude: [ helpers.root('node_modules') ]
+      },
+
+      {
+        test: /\.jpg$/,
+        loader: "file-loader",
+        exclude: [ helpers.root('node_modules') ]
+      },
+
+      {
+        test: /\.(woff2?|ttf|eot|svg)$/,
+        loader: 'url?limit=10000',
+      },
+
     ],
 
     // An array of applied pre and post loaders.

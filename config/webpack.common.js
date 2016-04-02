@@ -134,6 +134,18 @@ module.exports = {
         loader: 'raw-loader',
       },
 
+      // Support for SCSS
+      // To string loader support for *.scss files
+      // Css loader support for *.scss files
+      // Post css loader for *.scss files
+      // Sass loader for *.scss files
+      // Returns file content as string
+      {
+        test: /\.scss$/,
+        exclude: helpers.root('node_modules'),
+        loader: 'to-string!css-loader?-url!postcss-loader!sass-loader'
+      },
+
       // Raw loader support for *.html
       // Returns file content as string
       //
@@ -146,8 +158,34 @@ module.exports = {
         ],
       },
 
+      {
+        test: /\.png$/,
+        loader: "url-loader?limit=100000",
+        exclude: [ helpers.root('node_modules') ]
+      },
+
+      {
+        test: /\.jpg$/,
+        loader: "file-loader",
+        exclude: [ helpers.root('node_modules') ]
+      },
+
+      {
+        test: /\.(woff2?|ttf|eot|svg)$/,
+        loader: 'url?limit=10000',
+      },
+
+      {
+        test: /bootstrap-sass\/assets\/javascripts\//,
+        loader: 'imports?jQuery=jquery'
+      }
+
     ],
 
+  },
+
+  postcss: function () {
+    return [require('autoprefixer')]
   },
 
   // Add additional plugins to the compiler.
@@ -200,6 +238,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       chunksSortMode: 'none',
+    }),
+
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      _: 'lodash'
     }),
 
   ],

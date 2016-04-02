@@ -1,21 +1,21 @@
 import {Component, OnInit} from 'angular2/core';
 
 @Component({
-  selector: 'home',  // <home></home>
+  selector: 'set-new-password',
   providers: [],
   directives: [],
   pipes: [],
-  styles: [ require('./forgotPassword.scss') ],
-  template: require('./forgotPassword.html')
+  styles: [ require('./setNewPassword.scss') ],
+  template: require('./setNewPassword.html')
 })
-export class ForgotPassword implements OnInit{
+export class SetNewPassword implements OnInit{
 
   constructor() {
 
   }
 
   ngOnInit() {
-    console.log('hello `Forgot Password` component');
+    console.log('hello `Set New Password` component');
   }
 
 }

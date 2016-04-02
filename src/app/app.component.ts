@@ -1,10 +1,11 @@
-/*
- * Angular 2 decorators and services
- */
 import {Component} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 
-import {Home} from './home';
+import {Login} from './login';
+import {Register} from './register';
+import {ForgotPassword} from './forgot-password';
+import {SetNewPassword} from './set-new-password';
+
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
 
@@ -17,16 +18,14 @@ import {RouterActive} from './router-active';
   pipes: [ ],
   providers: [ ],
   directives: [ RouterActive ],
-  styles: [ require('./home.scss') ],
-  template: require('./home.html')
+  styles: [ require('./app.scss') ],
+  template: require('./app.html')
 })
 @RouteConfig([
-  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/login',  name: 'Login',  component: Login },
+  { path: '/',      name: 'Index', component: Login, useAsDefault: true },
   { path: '/register',  name: 'Register',  component: Register },
-  { path: '/forgot-password',  name: 'Forgot password',  component: ForgotPassword },
-  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
+  { path: '/forgot-password',  name: 'ForgotPassword',  component: ForgotPassword },
+  { path: '/set-new-password',  name: 'SetNewPassword',  component: SetNewPassword },
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';

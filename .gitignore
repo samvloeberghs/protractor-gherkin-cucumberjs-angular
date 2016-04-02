@@ -33,6 +33,7 @@ Thumbs.db
 # Node Files #
 /node_modules
 /bower_components
+npm-debug.log
 
 # Coverage #
 /coverage/
@@ -58,6 +59,3 @@ Thumbs.db
 # IDE #
 .idea/
 *.swp
-
-test/e2e/features/otherExample.feature
-test/e2e/features/otherExampleBis.feature

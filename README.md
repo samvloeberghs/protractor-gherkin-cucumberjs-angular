@@ -38,6 +38,7 @@ Gherkin serves two purposes — documentation and automated tests. The third is 
 More info:
 - https://github.com/cucumber/cucumber/wiki/Gherkin
 
+<!---
 ## Automated integration or end-to-end tests using Protractor, CucumberJs & Gherkin scenarios
 
 Writing unit tests covers testing the single source of truth of your models, services and whatever you code. Testing the whole picture of your webapplication requires that you test your application in a way that your vistors will use it. Manual testing these behaviours requires a lot of time and is prone to human errors. On the other hand it can also open up for unexplored use cases and broaden the view of your business case.
@@ -112,3 +113,5 @@ The business logic for this calculator is also very simple:
 Note that we could easily test this component using a simple unit test. We are testing the whole flow of the app:
 1. Calculate the result using the given user input
 2. Route to a page that shows the result
+
+-->

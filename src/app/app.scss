@@ -1,13 +1,33 @@
 .close {
-  margin:{
-    top:-1px;
+  margin: {
+    top: -1px;
   }
 }
-.alert{
-  padding:{
+
+.alert {
+  padding: {
     top: 7px;
     right: 7px;
     bottom: 7px;
     left: 15px;
+  }
+}
+
+.help-block {
+  margin: {
+    top: -5px;
+    bottom: 3px;
+  }
+}
+
+.form-group {
+  margin: {
+    bottom: 12px;
+  }
+}
+
+.error-group{
+  margin:{
+    top:12px;
   }
 }

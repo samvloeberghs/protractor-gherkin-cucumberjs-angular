@@ -14,9 +14,6 @@ cd protractor-gherkin-cucumberjs-angular2
 # install the repo with npm 
 npm install
  
-# install TypeScript typings 
-npm run typings-install
-
 # start the server 
 npm start 
 

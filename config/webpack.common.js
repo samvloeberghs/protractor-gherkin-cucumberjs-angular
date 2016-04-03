@@ -175,11 +175,6 @@ module.exports = {
         loader: 'url?limit=10000',
       },
 
-      {
-        test: /bootstrap-sass\/assets\/javascripts\//,
-        loader: 'imports?jQuery=jquery'
-      }
-
     ],
 
   },

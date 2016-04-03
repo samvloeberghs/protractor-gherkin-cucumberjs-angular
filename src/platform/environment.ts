@@ -16,7 +16,7 @@ if ('production' === ENV) {
 
   PROVIDERS = [
     ...PROVIDERS,
-    ELEMENT_PROBE_PROVIDERS_PROD_MODE
+    ELEMENT_PROBE_PROVIDERS_PROD_MODE,
   ];
 
 } else {

@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 
 import {Login} from './login';
@@ -19,7 +19,8 @@ import {RouterActive} from './router-active';
   providers: [ ],
   directives: [ RouterActive ],
   styles: [ require('./app.scss') ],
-  template: require('./app.html')
+  template: require('./app.html'),
+  encapsulation: ViewEncapsulation.None
 })
 @RouteConfig([
   { path: '/',      name: 'Index', component: Login, useAsDefault: true },

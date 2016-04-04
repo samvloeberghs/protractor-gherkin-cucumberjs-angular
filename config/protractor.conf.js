@@ -3,7 +3,7 @@ require('ts-node/register');
 var helpers = require('./helpers');
 
 exports.config = {
-  
+
   baseUrl: 'http://localhost:3000/',
 
   exclude: [],
@@ -13,11 +13,11 @@ exports.config = {
   framework: 'custom',
   frameworkPath: 'node_modules/protractor-cucumber-framework',
   specs: [
-    helpers.root('test/e2e/features/**/*.feature')
+    helpers.root('test/e2e/**/*.feature')
   ],
   cucumberOpts: {
     require: [
-      'test/e2e/features/steps/*.steps.js',
+      'test/e2e/features/*.steps.js',
       'test/e2e/features/support/*.js'
     ],
     format: 'pretty'

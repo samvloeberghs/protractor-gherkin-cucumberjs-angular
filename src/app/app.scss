@@ -37,6 +37,17 @@ hr {
   margin: {
     bottom: 12px;
   }
+  &:last-child{
+    margin:{
+      bottom:0;
+    }
+
+    & > div {
+      font:{
+        size: 85%;
+      }
+    }
+  }
 }
 
 .error-group{

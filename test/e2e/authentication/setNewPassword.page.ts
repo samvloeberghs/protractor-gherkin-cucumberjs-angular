@@ -1,4 +1,4 @@
-class SetNewPasswordPageObject {
+export class SetNewPasswordPageObject {
 
   form;
   passwordInput;
@@ -16,6 +16,10 @@ class SetNewPasswordPageObject {
 
   }
 
+  getPage(id: number, nonce: string) {
+    return browser.get(`http://localhost:3000/set-new-password?id=${id}&nonce=${nonce}`);
+  }
+
   setPassword(value: string) {
     return this.passwordInput.clear().sendKeys(value);
   }
@@ -24,10 +28,8 @@ class SetNewPasswordPageObject {
     return this.repeatPasswordInput.clear().sendKeys(value);
   }
 
-  submitForm(){
+  submitForm() {
     return this.form.sendKeys(protractor.Key.ENTER);
   }
 
 }
-
-module.exports = SetNewPasswordPageObject;

@@ -11,7 +11,7 @@ exports.config = {
   allScriptsTimeout: 110000,
 
   framework: 'custom',
-  frameworkPath: 'node_modules/protractor-cucumber-framework',
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
   specs: [
     helpers.root('test/e2e/**/*.feature')
   ],

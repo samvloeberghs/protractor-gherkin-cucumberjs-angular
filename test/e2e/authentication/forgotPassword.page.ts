@@ -1,4 +1,4 @@
-class ForgotPasswordPageObject {
+export class ForgotPasswordPageObject {
 
   form;
   emailInput;
@@ -15,14 +15,16 @@ class ForgotPasswordPageObject {
 
   }
 
+  getPage() {
+    return browser.get('http://localhost:3000/forgot-password');
+  }
+
   setEmail(value: string) {
     return this.emailInput.clear().sendKeys(value);
   }
 
-  submitForm(){
+  submitForm() {
     return this.form.sendKeys(protractor.Key.ENTER);
   }
 
 }
-
-module.exports = ForgotPasswordPageObject;

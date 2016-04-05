@@ -1,4 +1,4 @@
-class LoginPageObject {
+export class LoginPageObject {
 
   form;
   passwordInput;
@@ -14,6 +14,12 @@ class LoginPageObject {
 
   }
 
+  getPage() {
+    return browser.get('http://localhost:3000/login');
+    // or
+    // return browser.get('http://localhost:3000');
+  }
+
   setEmail(value: string) {
     return this.emailInput.clear().sendKeys(value);
   }
@@ -27,5 +33,3 @@ class LoginPageObject {
   }
 
 }
-
-module.exports = LoginPageObject;

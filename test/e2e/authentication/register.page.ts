@@ -1,4 +1,4 @@
-class RegisterPageObject {
+export class RegisterPageObject {
 
   form;
   nameInput;
@@ -18,6 +18,10 @@ class RegisterPageObject {
     this.passwordInput = container.element(by.id('register-password'));
     this.repeatPasswordInput = container.element(by.id('register-repeat-password'));
 
+  }
+
+  getPage() {
+    return browser.get('http://localhost:3000/register');
   }
 
   setName(value: string) {
@@ -41,5 +45,3 @@ class RegisterPageObject {
   }
 
 }
-
-module.exports = RegisterPageObject;

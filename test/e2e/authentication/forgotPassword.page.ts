@@ -5,13 +5,9 @@ export class ForgotPasswordPageObject {
 
   constructor() {
 
-    // get the container wrapper
-    var container = element(by.id("forgot-password-container"));
-
     // get the relevant elements
-    this.form = container.element(by.id('forgot-password-form'));
-    this.emailInput = container.element(by.id('forgot-password-email'));
-
+    this.form = element(by.id('forgot-password-form'));
+    this.emailInput = this.form.element(by.id('forgot-password-email'));
 
   }
 

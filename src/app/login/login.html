@@ -1,9 +1,10 @@
 <div class="container" id="login-container">
   <div class="col-md-4 col-md-offset-4">
     <div class="panel panel-default">
-      <div class="panel-heading"><h3 class="panel-title"><strong>Login</strong></h3>
-        <div style="float:right; font-size: 80%; position: relative; top:-15px">
-          <a [routerLink]=" ['/ForgotPassword']">Forgot password?</a>
+      <div class="panel-heading">
+        <h3 class="panel-title"><strong>Login</strong></h3>
+        <div>
+          <a [routerLink]=" ['/ForgotPassword']" id="login-forgot-password-link">Forgot password?</a>
         </div>
       </div>
 
@@ -53,7 +54,7 @@
 
           </div>
 
-          <button type="submit" class="btn btn-success">Login</button>
+          <button type="submit" class="btn btn-success" id="login-submit">Login</button>
 
           <hr />
 
@@ -61,7 +62,7 @@
 
             <div>
               Don't have an account?
-              <a [routerLink]=" ['/Register']">
+              <a [routerLink]=" ['/Register']" id="login-register-link">
                 Register here
               </a>
             </div>

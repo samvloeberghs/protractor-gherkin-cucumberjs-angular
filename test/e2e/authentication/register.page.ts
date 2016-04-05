@@ -8,15 +8,12 @@ export class RegisterPageObject {
 
   constructor() {
 
-    // get the container wrapper
-    var container = element(by.id("register-container"));
-
     // get the relevant elements
-    this.form = container.element(by.id('register-form'));
-    this.nameInput = container.element(by.id('register-name'));
-    this.emailInput = container.element(by.id('register-email'));
-    this.passwordInput = container.element(by.id('register-password'));
-    this.repeatPasswordInput = container.element(by.id('register-repeat-password'));
+    this.form = element(by.id('register-form'));
+    this.nameInput = this.form.element(by.id('register-name'));
+    this.emailInput = this.form.element(by.id('register-email'));
+    this.passwordInput = this.form.element(by.id('register-password'));
+    this.repeatPasswordInput = this.form.element(by.id('register-repeat-password'));
 
   }
 

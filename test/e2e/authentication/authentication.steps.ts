@@ -1,25 +1,35 @@
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
-
-import {ForgotPasswordPageObject} from './forgotPassword.page';
+import {LoginPageObject} from './login.page';
 
 
 module.exports = function () {
 
-  var testCalculatorPage = new ForgotPasswordPageObject();
+  let loginPageObject = new LoginPageObject();
 
-  this.Given('$first is the first and $second is the second value', function (first, second, callback) {
+  this.Given(/^user clicks the login link$/, (callback) => {
+    loginPageObject.getPage();
+    callback();
 
+  });
+  this.Given(/^(.*) is the user email$/, (email, callback) => {
+    loginPageObject.setEmail(email);
+    callback();
+  });
+  this.Given(/^(.*) is the user password$/, (password, callback) => {
+    loginPageObject.setPassword(password);
     callback();
   });
 
-  this.When('calculating result', function (callback) {
-    
+  this.When(/^submitting the form$/, (callback) => {
+    loginPageObject.submitForm();
     callback();
   });
 
-  this.Then('the result is $result', function (result, callback) {
-    expect(testCalculatorPage.getResult()).to.eventually.equal(result).and.notify(callback);
+  this.Then(/^the form is validated (.*)$/, (valid, callback) => {
+    valid = valid == 'true';
+    expect(loginPageObject.hasErrorMessages()).to.become(valid).and.notify(callback);
   });
+
 };

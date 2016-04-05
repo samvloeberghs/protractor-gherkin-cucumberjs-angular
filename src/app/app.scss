@@ -5,6 +5,16 @@ hr {
   }
 }
 
+.panel-heading {
+  & > div {
+    float:right;
+    font:{
+      size: 80%;
+    }
+    position: relative;
+    top:-15px
+  }
+}
 .container{
   margin:{
     top:50px;

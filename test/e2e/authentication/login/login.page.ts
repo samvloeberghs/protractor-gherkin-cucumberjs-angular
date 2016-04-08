@@ -4,6 +4,8 @@ export class LoginPageObject {
   passwordInput;
   emailInput;
   submitButton;
+  goToForgotPasswordLink;
+  goToRegisterLink;
 
   constructor() {
 
@@ -13,12 +15,23 @@ export class LoginPageObject {
     this.emailInput = this.form.element(by.id('login-email'));
     this.submitButton = this.form.element(by.id('login-submit'));
 
+    this.goToForgotPasswordLink = element(by.id('login-forgot-password-link'));
+    this.goToRegisterLink = element(by.id('login-register-link'));
+
   }
 
   getPage() {
     return browser.get('http://localhost:3000/login');
     // or
     // return browser.get('http://localhost:3000');
+  }
+
+  navigateToForgotPasswordPage() {
+    return this.goToForgotPasswordLink.click();
+  }
+
+  navigateToRegisterPage() {
+    return this.goToRegisterLink.click();
   }
 
   setEmail(value: string) {
@@ -29,17 +42,16 @@ export class LoginPageObject {
     return this.passwordInput.clear().sendKeys(value);
   }
 
-  submitForm(){
+  submitForm() {
     return this.submitButton.sendKeys(protractor.Key.ENTER);
-    //return this.form.sendKeys(protractor.Key.ENTER);
   }
 
-  getAllErrorMessages(){
+  getAllErrorMessages() {
     return element.all(by.css('.error-group'));
   }
 
-  hasErrorMessages(){
-    return this.getAllErrorMessages().count().then(value =>{
+  hasErrorMessages() {
+    return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });
   }

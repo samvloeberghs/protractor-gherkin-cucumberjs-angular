@@ -5,6 +5,9 @@ export class RegisterPageObject {
   emailInput;
   passwordInput;
   repeatPasswordInput;
+  submitButton;
+  goToForgotPasswordLink;
+  goToLoginLink;
 
   constructor() {
 
@@ -14,6 +17,10 @@ export class RegisterPageObject {
     this.emailInput = this.form.element(by.id('register-email'));
     this.passwordInput = this.form.element(by.id('register-password'));
     this.repeatPasswordInput = this.form.element(by.id('register-repeat-password'));
+    this.submitButton = this.form.element(by.id('register-submit'));
+
+    this.goToForgotPasswordLink = element(by.id('register-forgot-password-link'));
+    this.goToLoginLink = element(by.id('register-login-link'));
 
   }
 
@@ -37,8 +44,18 @@ export class RegisterPageObject {
     return this.repeatPasswordInput.clear().sendKeys(value);
   }
 
-  submitForm(){
-    return this.form.sendKeys(protractor.Key.ENTER);
+  submitForm() {
+    return this.submitButton.sendKeys(protractor.Key.ENTER);
+  }
+
+  getAllErrorMessages() {
+    return element.all(by.css('.error-group'));
+  }
+
+  hasErrorMessages() {
+    return this.getAllErrorMessages().count().then(value => {
+      return value === 0;
+    });
   }
 
 }

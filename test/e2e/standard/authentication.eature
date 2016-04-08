@@ -1,40 +1,9 @@
-Feature: This features describes our authentication component
 
-  Scenario Outline: The user is using the login form
+  Scenario: The user navigates from the homepage to the forgot password page
 
-    Given user clicks the login link
-    And <email> is the user email
-    And <password> is the user password
-    When submitting the form
-    Then the form is validated <valid>
-
-    Examples:
-      | email         | password             | valid |
-      |               |                      | false |
-      |               | thisisavalidpassword | false |
-      | samkwerri.be  | thisisavalidpassword | false |
-      | sam@kwerri.be |                      | false |
-      | sam@kwerri.be | thisisavalidpassword | true  |
-
-
-  Scenario Outline: The user is using the registration form
-
-    Given user clicks the registration link
-    And <email> is the user email
-    And <name> is the user's fullname
-    And <password> is the provided password
-    And <repeatpassword> is the repeated password
-    When submitting the form
-    Then the form is validated <valid>
-    And the user is redirect to the thank you page <valid>
-
-    Examples:
-      | email         | name           | valid |
-      |               |                | false |
-      |               | Sam Vloeberghs | false |
-      | samkwerri.be  | Sam Vloeberghs | false |
-      | sam@kwerri.be |                | false |
-      | sam@kwerri.be | Sam Vloeberghs | true  |
+    Given user lands on the home page
+    When user clicks on the forgot password link
+    Then he navigated to the forgot password
 
   Scenario Outline: The user is using the forgot password form
 

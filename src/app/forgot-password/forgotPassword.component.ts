@@ -41,6 +41,7 @@ export class ForgotPassword implements OnInit{
     if (this.form.valid) {
       console.log(this.form.value);
     }
+    
     event.preventDefault();
 
   }

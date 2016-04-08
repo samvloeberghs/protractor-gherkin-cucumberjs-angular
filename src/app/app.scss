@@ -4,6 +4,24 @@ hr {
     bottom:10px;
   }
 }
+a{
+  padding-bottom:3px;
+  color: #444;
+  border:{
+    bottom:1px dotted #777;
+  }
+
+  &:hover,
+  &:active{
+    text:{
+      decoration:none;
+    }
+    color:#222;
+    border:{
+      bottom:1px solid #777;
+    }
+  }
+}
 
 .panel-heading {
   & > div {

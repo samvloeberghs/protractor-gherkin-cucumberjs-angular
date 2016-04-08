@@ -35,12 +35,35 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 
+  <style>
+    #loading-container {
+      margin-top:50px;
+    }
+  </style>
+
 </head>
 
 <body>
 
   <app>
-    Loading...
+    <div class="container" id="loading-container">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Loading ..</strong></h3>
+          </div>
+
+          <div class="panel-body">
+
+            <p style="margin-bottom:0;font-size: 13px;px;">
+              Please be patient, we are loading the application :)
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
   </app>
 
   <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
@@ -58,8 +81,6 @@
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </body>
 </html>

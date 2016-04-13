@@ -1,13 +1,13 @@
 export class RegisterPageObject {
 
-  form;
-  nameInput;
-  emailInput;
-  passwordInput;
-  repeatPasswordInput;
-  submitButton;
-  goToForgotPasswordLink;
-  goToLoginLink;
+  private form;
+  private nameInput;
+  private emailInput;
+  private passwordInput;
+  private repeatPasswordInput;
+  private submitButton;
+  private goToForgotPasswordLink;
+  private goToLoginLink;
 
   constructor() {
 
@@ -54,7 +54,7 @@ export class RegisterPageObject {
 
   hasErrorMessages() {
     return this.getAllErrorMessages().count().then(value => {
-      return value === 0;
+      return value > 0;
     });
   }
 

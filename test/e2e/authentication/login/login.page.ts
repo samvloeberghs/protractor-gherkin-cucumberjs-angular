@@ -1,11 +1,11 @@
 export class LoginPageObject {
 
-  form;
-  passwordInput;
-  emailInput;
-  submitButton;
-  goToForgotPasswordLink;
-  goToRegisterLink;
+  private form;
+  private passwordInput;
+  private emailInput;
+  private submitButton;
+  private goToForgotPasswordLink;
+  private goToRegisterLink;
 
   constructor() {
 
@@ -52,7 +52,7 @@ export class LoginPageObject {
 
   hasErrorMessages() {
     return this.getAllErrorMessages().count().then(value => {
-      return value === 0;
+      return value > 0;
     });
   }
 

@@ -14,12 +14,12 @@ module.exports = function () {
     loginPageObject.navigateToRegisterPage();
     callback();
   });
-  this.Given(/^'(.*)' is the user email used in the register form$/, function (email, callback) {
-    registerPageObject.setEmail(email);
-    callback();
-  });
   this.Given(/^'(.*)' is the user name used in the register form$/, function (name, callback) {
     registerPageObject.setName(name);
+    callback();
+  });
+  this.Given(/^'(.*)' is the user email used in the register form$/, function (email, callback) {
+    registerPageObject.setEmail(email);
     callback();
   });
   this.Given(/^'(.*)' is the provided password used in the register form$/, function (password, callback) {

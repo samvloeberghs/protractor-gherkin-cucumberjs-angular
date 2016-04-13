@@ -19,7 +19,7 @@
 
   Scenario Outline: The user is setting a new password ( invalid link )
 
-    Given <nonce> is the provided nonce in the email link
+    Given <nonce> is the provided nonce in the email link with no nonce or id
     And <id> is the id representing the user
     When coming on the page
     Then the request is validated <valid>
@@ -33,9 +33,9 @@
 
   Scenario Outline: The user is setting a new password ( valid link )
 
-    Given valid link with nonce & user id
-    And <password> is the provided new password
-    And <repeatpassword> is the repeated new password
+    Given valid link with nonce & user id with nonce and id
+    And <password> is the provided new password in the set new password form
+    And <repeatpassword> is the repeated new password in the set new password form
     When submitting the form
     Then the form is validated <valid>
     And the user is redirected to the login page <valid>

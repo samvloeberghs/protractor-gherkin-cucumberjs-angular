@@ -3,8 +3,8 @@ Feature: This feature describe the scenarios of the register part of our authent
   Scenario Outline: The user is using the registration form
 
     Given user clicks the register link
-    And '<email>' is the user email used in the register form
     And '<name>' is the user name used in the register form
+    And '<email>' is the user email used in the register form
     And '<password>' is the provided password used in the register form
     And '<repeatPassword>' is the repeated password used in the register form
     When submitting the register form

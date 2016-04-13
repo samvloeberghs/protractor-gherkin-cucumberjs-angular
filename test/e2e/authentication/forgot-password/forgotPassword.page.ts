@@ -1,10 +1,10 @@
 export class ForgotPasswordPageObject {
 
-  form;
-  emailInput;
-  submitButton;
-  goToLoginLink;
-  goToRegisterLink;
+  private form;
+  private emailInput;
+  private submitButton;
+  private goToLoginLink;
+  private goToRegisterLink;
 
   constructor() {
 
@@ -36,7 +36,7 @@ export class ForgotPasswordPageObject {
 
   hasErrorMessages() {
     return this.getAllErrorMessages().count().then(value => {
-      return value === 0;
+      return value > 0;
     });
   }
 

@@ -28,7 +28,7 @@ module.exports = function () {
 
   this.Then(/^the login form is validated '(.*)'$/, (valid, callback) => {
     valid = valid === 'true';
-    expect(loginPageObject.hasErrorMessages()).to.become(valid).and.notify(callback);
+    expect(loginPageObject.formIsValid()).to.become(valid).and.notify(callback);
   });
 
 };

@@ -58,4 +58,10 @@ export class RegisterPageObject {
     });
   }
 
+  formIsValid(){
+    return this.getAllErrorMessages().count().then(value => {
+      return value === 0;
+    });
+  }
+
 }

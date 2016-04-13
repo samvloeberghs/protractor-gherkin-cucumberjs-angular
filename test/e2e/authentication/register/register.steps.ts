@@ -38,7 +38,7 @@ module.exports = function () {
 
   this.Then(/^the register form is validated '(.*)'$/, function (valid, callback) {
     valid = valid === 'true';
-    expect(registerPageObject.hasErrorMessages()).to.become(valid).and.notify(callback);
+    expect(registerPageObject.formIsValid()).to.become(valid).and.notify(callback);
   });
 
 

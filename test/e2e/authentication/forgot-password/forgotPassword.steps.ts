@@ -28,7 +28,7 @@ module.exports = function () {
 
   this.Then(/^the forgot password form is validated '(.*)'$/, function (valid, callback) {
     valid = valid === 'true';
-    expect(forgotPasswordPageObject.hasErrorMessages()).to.become(valid).and.notify(callback);
+    expect(forgotPasswordPageObject.formIsValid()).to.become(valid).and.notify(callback);
   });
 
 

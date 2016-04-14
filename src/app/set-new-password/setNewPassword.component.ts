@@ -15,6 +15,7 @@ export class SetNewPassword implements OnInit{
   form: ControlGroup;
   submitted = false;
   validRequest = false;
+  newPasswordSet = false;
 
   constructor(private _fb: FormBuilder,
               private _routeParams:RouteParams) {
@@ -49,6 +50,7 @@ export class SetNewPassword implements OnInit{
     this.submitted = true;
 
     if (this.form.valid) {
+      this.newPasswordSet = true;
       console.log(this.form.value);
     }
     event.preventDefault();
@@ -66,7 +68,7 @@ export class SetNewPassword implements OnInit{
         };
       }
     };
-    
+
   }
 
 }

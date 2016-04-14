@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {RouteParams} from 'angular2/router';
+import {Router, RouteParams} from 'angular2/router';
 import {FormBuilder, Validators, ControlGroup} from 'angular2/common';
 
 @Component({
@@ -7,10 +7,10 @@ import {FormBuilder, Validators, ControlGroup} from 'angular2/common';
   providers: [],
   directives: [],
   pipes: [],
-  styles: [ require('./setNewPassword.scss') ],
+  styles: [require('./setNewPassword.scss')],
   template: require('./setNewPassword.html')
 })
-export class SetNewPassword implements OnInit{
+export class SetNewPassword implements OnInit {
 
   form: ControlGroup;
   submitted = false;
@@ -18,7 +18,8 @@ export class SetNewPassword implements OnInit{
   newPasswordSet = false;
 
   constructor(private _fb: FormBuilder,
-              private _routeParams:RouteParams) {
+              private _router: Router,
+              private _routeParams: RouteParams) {
   }
 
   ngOnInit() {
@@ -50,10 +51,19 @@ export class SetNewPassword implements OnInit{
     this.submitted = true;
 
     if (this.form.valid) {
-      this.newPasswordSet = true;
       console.log(this.form.value);
+      this.newPasswordSet = true;
+      this._navigateToLogin();
     }
     event.preventDefault();
+
+  }
+
+  private _navigateToLogin() {
+
+    setTimeout(()=> {
+      this._router.navigate(['/Login']);
+    }, 3000);
 
   }
 

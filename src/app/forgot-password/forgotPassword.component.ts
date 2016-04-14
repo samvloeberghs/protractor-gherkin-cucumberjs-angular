@@ -40,8 +40,8 @@ export class ForgotPassword implements OnInit{
     this.submitted = true;
 
     if (this.form.valid) {
-      this.validSubmit = true;
       console.log(this.form.value);
+      this.validSubmit = true;
     }
 
     event.preventDefault();

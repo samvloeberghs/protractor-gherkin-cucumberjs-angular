@@ -58,8 +58,8 @@ export class Register implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
-      this.registered = true;
       console.log(this.form.value);
+      this.registered = true;
     }
     event.preventDefault();
 

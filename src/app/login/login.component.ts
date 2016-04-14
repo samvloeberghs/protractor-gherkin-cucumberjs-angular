@@ -15,6 +15,7 @@ export class Login implements OnInit {
 
   form: ControlGroup;
   submitted = false;
+  authenticated = false;
 
   constructor(private _fb: FormBuilder) {
   }
@@ -43,6 +44,7 @@ export class Login implements OnInit {
 
     if (this.form.valid) {
       console.log(this.form.value);
+      this.authenticated = true;
     }
     event.preventDefault();
   }

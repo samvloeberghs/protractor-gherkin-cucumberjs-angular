@@ -10,11 +10,9 @@
 
       <div class="panel-body">
 
-        <form role="form" novalidate [ngFormModel]="form" (submit)="submit($event)" id="login-form">
-
-          <div class="alert alert-danger" *ngIf="false">
-            Incorrect email or password!
-          </div>
+        <form role="form" novalidate id="login-form"
+              [ngFormModel]="form" (submit)="submit($event)"
+              *ngIf="!authenticated">
 
           <div class="form-group" [ngClass]="{'has-error': ( submitted && !form.controls.email.valid )}">
             <div class="input-group">
@@ -29,7 +27,8 @@
               <span class="help-block" *ngIf="form.controls.email.hasError('required')">
                 Your email is required
               </span>
-              <span class="help-block" *ngIf="!form.controls.email.hasError('required') && form.controls.email.hasError('invalidEmail')">
+              <span class="help-block"
+                    *ngIf="!form.controls.email.hasError('required') && form.controls.email.hasError('invalidEmail')">
                 Your email is invalid
               </span>
             </div>
@@ -56,7 +55,7 @@
 
           <button type="submit" class="btn btn-success" id="login-submit">Login</button>
 
-          <hr />
+          <hr/>
 
           <div class="form-group">
 
@@ -69,6 +68,14 @@
 
           </div>
         </form>
+        <div id=""
+             *ngIf="authenticated">
+
+          <div class="alert alert-success">
+            You are logged in!
+          </div>
+
+        </div>
       </div>
     </div>
   </div>

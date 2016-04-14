@@ -15,6 +15,7 @@ export class ForgotPassword implements OnInit{
 
   form: ControlGroup;
   submitted = false;
+  validSubmit = false;
 
   constructor(private _fb: FormBuilder) {
 
@@ -39,9 +40,10 @@ export class ForgotPassword implements OnInit{
     this.submitted = true;
 
     if (this.form.valid) {
+      this.validSubmit = true;
       console.log(this.form.value);
     }
-    
+
     event.preventDefault();
 
   }

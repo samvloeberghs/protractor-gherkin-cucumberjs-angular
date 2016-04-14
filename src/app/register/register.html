@@ -10,7 +10,8 @@
 
       <div class="panel-body">
 
-        <form role="form" novalidate [ngFormModel]="form" (submit)="submit($event)" id="register-form">
+        <form role="form" novalidate id="register-form"
+              [ngFormModel]="form" (submit)="submit($event)" *ngIf="!registered">
 
           <div class="form-group" [ngClass]="{'has-error': ( submitted && !form.controls.name.valid )}">
 
@@ -113,6 +114,14 @@
           </div>
 
         </form>
+        <div id=""
+             *ngIf="registered">
+
+          <div class="alert alert-success">
+            You are now registered! Check email for further instructions.
+          </div>
+
+        </div>
       </div>
     </div>
   </div>

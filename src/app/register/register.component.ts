@@ -15,6 +15,7 @@ export class Register implements OnInit {
 
   form: ControlGroup;
   submitted = false;
+  registered = false;
 
   constructor(private _fb: FormBuilder) {
   }
@@ -57,6 +58,7 @@ export class Register implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
+      this.registered = true;
       console.log(this.form.value);
     }
     event.preventDefault();

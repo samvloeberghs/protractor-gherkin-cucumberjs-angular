@@ -12,21 +12,21 @@ export class AuthenticationPageObject {
     };
 
   }
-  
+
   goToLogin(){
-    return browser.get(`http://localhost:3000/${this.pages['login']}`);
+    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['login']}`);
   }
 
   goToRegisterPage(){
-    return browser.get(`http://localhost:3000/${this.pages['register']}`);
+    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['register']}`);
   }
 
   goToForgotPasswordPage(){
-    return browser.get(`http://localhost:3000/${this.pages['forgotPassword']}`);
+    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['forgotPassword']}`);
   }
 
   goToSetNewPasswordPage(){
-    return browser.get(`http://localhost:3000/${this.pages['setNewPassword']}`);
+    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['setNewPassword']}`);
   }
 
   getCurrentUrl() {

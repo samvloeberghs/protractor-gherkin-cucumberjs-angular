@@ -19,7 +19,7 @@ export class ForgotPasswordPageObject {
   }
 
   getPage() {
-    return browser.get('http://localhost:3000/forgot-password');
+    return browser.get('http://ng2auth.samvloeberghs.be/forgot-password');
   }
 
   setEmail(value: string) {

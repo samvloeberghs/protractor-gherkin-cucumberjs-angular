@@ -21,7 +21,7 @@ export class SetNewPasswordPageObject {
   }
 
   getPage(id?: string, nonce?:string) {
-    return browser.get(`http://localhost:3000/set-new-password?id=${id}&nonce=${nonce}`);
+    return browser.get(`http://ng2auth.samvloeberghs.be/set-new-password?id=${id}&nonce=${nonce}`);
   }
 
   setPassword(value: string) {

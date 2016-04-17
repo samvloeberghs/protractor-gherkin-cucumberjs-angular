@@ -25,7 +25,7 @@ export class RegisterPageObject {
   }
 
   getPage() {
-    return browser.get('http://localhost:3000/register');
+    return browser.get('http://ng2auth.samvloeberghs.be/register');
   }
 
   setName(value: string) {

@@ -2,13 +2,17 @@ let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
 import {LoginPageObject} from './login.page';
+import {AuthenticationPageObject} from '../authentication.page';
 
 module.exports = function () {
 
+  let authenticationModule = new AuthenticationPageObject();
   let loginPageObject = new LoginPageObject();
 
+  this.setDefaultTimeout(60 * 1000);
+
   this.Given(/^user clicks the login link$/, (callback) => {
-    loginPageObject.getPage();
+    authenticationModule.goToLogin();
     callback();
 
   });

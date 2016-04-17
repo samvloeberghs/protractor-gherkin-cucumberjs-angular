@@ -18,10 +18,6 @@ export class ForgotPasswordPageObject {
 
   }
 
-  getPage() {
-    return browser.get('http://ng2auth.samvloeberghs.be/forgot-password');
-  }
-
   setEmail(value: string) {
     return this.emailInput.clear().sendKeys(value);
   }

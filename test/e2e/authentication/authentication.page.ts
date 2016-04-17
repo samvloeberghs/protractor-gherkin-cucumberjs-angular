@@ -13,20 +13,23 @@ export class AuthenticationPageObject {
 
   }
 
+  openApp(){
+    return browser.get('');
+  }
   goToLogin(){
-    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['login']}`);
+    return browser.get(`${this.pages['login']}`);
   }
 
   goToRegisterPage(){
-    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['register']}`);
+    return browser.get(`${this.pages['register']}`);
   }
 
   goToForgotPasswordPage(){
-    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['forgotPassword']}`);
+    return browser.get(`${this.pages['forgotPassword']}`);
   }
 
-  goToSetNewPasswordPage(){
-    return browser.get(`http://ng2auth.samvloeberghs.be/${this.pages['setNewPassword']}`);
+  goToSetNewPasswordPage(id?: string, nonce?:string){
+    return browser.get(`${this.pages['setNewPassword']}?id=${id}&nonce=${nonce}`);
   }
 
   getCurrentUrl() {

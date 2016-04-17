@@ -3,17 +3,20 @@ let expect = chai.expect;
 
 import {ForgotPasswordPageObject} from './forgotPassword.page';
 import {LoginPageObject} from '../login';
+import {AuthenticationPageObject} from '../authentication.page';
 
 module.exports = function () {
-
+  
+  let authenticationModule = new AuthenticationPageObject();
   let loginPageObject = new LoginPageObject();
   let forgotPasswordPageObject = new ForgotPasswordPageObject();
 
+  this.setDefaultTimeout(60 * 1000);
+
   this.Given(/^user clicks the forgot password link$/, (callback) => {
-    loginPageObject.getPage();
+    authenticationModule.goToLogin();
     loginPageObject.navigateToForgotPasswordPage();
     callback();
-
   });
 
   this.Given(/^'(.*)' is the user email used in the forgot password form$/, function (email, callback) {

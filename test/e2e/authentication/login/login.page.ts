@@ -20,12 +20,6 @@ export class LoginPageObject {
 
   }
 
-  getPage() {
-    return browser.get('http://ng2auth.samvloeberghs.be/login');
-    // or
-    // return browser.get('http://localhost:3000');
-  }
-
   navigateToForgotPasswordPage() {
     return this.goToForgotPasswordLink.click();
   }

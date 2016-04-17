@@ -4,7 +4,6 @@ var helpers = require('./helpers');
 
 exports.config = {
 
-
   /**
    * Angular 2 configuration
    *
@@ -14,9 +13,10 @@ exports.config = {
    */
   useAllAngular2AppRoots: true,
 
-  /* LOCALHOST CONFIG */
-  seleniumServerJar: "node_modules/protractor/selenium/selenium-server-standalone-2.52.0.jar",
-  baseUrl: 'http://localhost:3000/',
+  /* SAUCELABS CONFIG */
+  sauceUser: process.env.SAUCE_USERNAME,
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
+  baseUrl: 'http://ng2auth.samvloeberghs.be/',
 
   exclude: [],
 
@@ -34,16 +34,20 @@ exports.config = {
     format: 'pretty'
   },
 
-  directConnect: true,
-
-  capabilities: {
-    'browserName': 'chrome',
-    'chromeOptions': {
-      'args': ['show-fps-counter=true']
+  multiCapabilities: [
+    {
+      'platform': 'Windows 7',
+      'browserName': 'chrome',
+      'version': '49'
+    },
+    {
+      'platform': 'Windows 7',
+      'browserName': 'chrome',
+      'version': '48'
     }
-  },
+  ],
 
-  onPrepare: function() {
+  onPrepare: function () {
     browser.ignoreSynchronization = true;
   }
 

@@ -3,14 +3,18 @@ let expect = chai.expect;
 
 import {RegisterPageObject} from './register.page';
 import {LoginPageObject} from '../login';
+import {AuthenticationPageObject} from '../authentication.page';
 
 module.exports = function () {
 
+  let authenticationModule = new AuthenticationPageObject();
   let loginPageObject = new LoginPageObject();
   let registerPageObject = new RegisterPageObject();
 
+  this.setDefaultTimeout(60 * 1000);
+
   this.Given(/^user clicks the register link$/, (callback) => {
-    loginPageObject.getPage();
+    authenticationModule.goToLogin();
     loginPageObject.navigateToRegisterPage();
     callback();
   });

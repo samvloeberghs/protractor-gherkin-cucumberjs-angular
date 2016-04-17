@@ -19,6 +19,8 @@ module.exports = function () {
    });
    */
 
+  this.setDefaultTimeout(60 * 1000);
+  
 
   this.Given(/^'(.*)' is the provided nonce in the email link$/, (nonce, callback) => {
     currentNonce = nonce;

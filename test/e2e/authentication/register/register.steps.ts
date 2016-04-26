@@ -1,49 +1,62 @@
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
+import {binding, given, when, then} from "cucumber-tsflow";
+
 import {RegisterPageObject} from './register.page';
 import {LoginPageObject} from '../login';
 import {AuthenticationPageObject} from '../authentication.page';
 
-module.exports = function () {
+@binding()
+class RegisterSteps {
 
-  let authenticationModule = new AuthenticationPageObject();
-  let loginPageObject = new LoginPageObject();
-  let registerPageObject = new RegisterPageObject();
+  private authenticationModule: AuthenticationPageObject = new AuthenticationPageObject();
+  private loginPageObject: LoginPageObject = new LoginPageObject();
+  private registerPageObject: RegisterPageObject = new RegisterPageObject();
 
-  this.setDefaultTimeout(60 * 1000);
-
-  this.Given(/^user clicks the register link$/, (callback) => {
-    authenticationModule.goToLogin();
-    loginPageObject.navigateToRegisterPage();
+  @given(/^user clicks the register link$/)
+  private givenUserClicksTheLoginLink(callback: Function) {
+    this.authenticationModule.goToLoginPage();
+    this.loginPageObject.navigateToRegisterPage();
     callback();
-  });
-  this.Given(/^'(.*)' is the user name used in the register form$/, function (name, callback) {
-    registerPageObject.setName(name);
-    callback();
-  });
-  this.Given(/^'(.*)' is the user email used in the register form$/, function (email, callback) {
-    registerPageObject.setEmail(email);
-    callback();
-  });
-  this.Given(/^'(.*)' is the provided password used in the register form$/, function (password, callback) {
-    registerPageObject.setPassword(password);
-    callback();
-  });
-  this.Given(/^'(.*)' is the repeated password used in the register form/, function (repeatPassword, callback) {
-    registerPageObject.setRepeatPassword(repeatPassword);
-    callback();
-  });
+  };
 
-  this.When(/^submitting the register form$/, (callback) => {
-    registerPageObject.submitForm();
+  @given(/^'(.*)' is the user name used in the register form$/)
+  private givenUsername(name: string, callback: Function): void {
+    this.registerPageObject.setName(name);
     callback();
-  });
+  };
 
-  this.Then(/^the register form is validated '(.*)'$/, function (valid, callback) {
-    valid = valid === 'true';
-    expect(registerPageObject.formIsValid()).to.become(valid).and.notify(callback);
-  });
+  @given(/^'(.*)' is the user email used in the register form$/)
+  private givenUserEmail(email: string, callback: Function): void {
+    this.registerPageObject.setEmail(email);
+    callback();
+  };
 
+  @given(/^'(.*)' is the provided password used in the register form$/)
+  private givenPassword(password: string, callback: Function): void {
+    this.registerPageObject.setPassword(password);
+    callback();
+  };
 
-};
+  @given(/^'(.*)' is the repeated password used in the register form/)
+  private givenRepeatPassword(repeatPassword: string, callback: Function): void {
+    this.registerPageObject.setRepeatPassword(repeatPassword);
+    callback();
+  };
+
+  @when(/^submitting the register form$/)
+  private whenSubmitForm(callback: Function): void {
+    this.registerPageObject.submitForm();
+    callback();
+  };
+
+  @then(/^the register form is validated '(.*)'$/)
+  private thenFormIsValidated(valid: string, callback: Function): void {
+    let isValid = valid === 'true';
+    expect(this.registerPageObject.formIsValid()).to.become(isValid).and.notify(callback);
+  }
+
+}
+
+export = RegisterSteps;

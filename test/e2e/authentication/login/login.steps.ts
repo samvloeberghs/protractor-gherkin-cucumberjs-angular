@@ -1,38 +1,46 @@
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
+import {binding, given, when, then} from "cucumber-tsflow";
+
 import {LoginPageObject} from './login.page';
 import {AuthenticationPageObject} from '../authentication.page';
 
-module.exports = function () {
+@binding()
+class LoginSteps {
 
-  let authenticationModule = new AuthenticationPageObject();
-  let loginPageObject = new LoginPageObject();
+  private authenticationModule: AuthenticationPageObject = new AuthenticationPageObject();
+  private loginPageObject: LoginPageObject = new LoginPageObject();
 
-  this.setDefaultTimeout(60 * 1000);
-
-  this.Given(/^user clicks the login link$/, (callback) => {
-    authenticationModule.goToLogin();
+  @given(/^user clicks the login link$/)
+  private givenUserClicksTheLoginLink(callback: Function): void {
+    this.authenticationModule.goToLoginPage();
     callback();
+  };
 
-  });
-  this.Given(/^'(.*)' is the user email in the login form$/, (email, callback) => {
-    loginPageObject.setEmail(email);
+  @given(/^'(.*)' is the user email in the login form$/)
+  private givenUserEmail(email: string, callback: Function): void {
+    this.loginPageObject.setEmail(email);
     callback();
-  });
-  this.Given(/^'(.*)' is the user password in the login form$/, (password, callback) => {
-    loginPageObject.setPassword(password);
+  };
+
+  @given(/^'(.*)' is the user password in the login form$/)
+  private givenPassword(password: string, callback: Function): void {
+    this.loginPageObject.setPassword(password);
     callback();
-  });
+  };
 
-  this.When(/^submitting the login form$/, (callback) => {
-    loginPageObject.submitForm();
+  @when(/^submitting the login form$/)
+  private whenSubmitForm(callback: Function): void {
+    this.loginPageObject.submitForm();
     callback();
-  });
+  };
 
-  this.Then(/^the login form is validated '(.*)'$/, (valid, callback) => {
-    valid = valid === 'true';
-    expect(loginPageObject.formIsValid()).to.become(valid).and.notify(callback);
-  });
+  @then(/^the login form is validated '(.*)'$/)
+  private thenFormIsValidated(valid: string, callback: Function): void {
+    let isValid = valid === 'true';
+    expect(this.loginPageObject.formIsValid()).to.become(isValid).and.notify(callback);
+  };
+}
 
-};
+export = LoginSteps;

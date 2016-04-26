@@ -1,3 +1,6 @@
+import ElementArrayFinder = protractor.ElementArrayFinder;
+import Promise = webdriver.promise.Promise;
+
 export class SetNewPasswordPageObject {
 
   private form;
@@ -20,53 +23,47 @@ export class SetNewPasswordPageObject {
 
   }
 
-  getPage(id?: string, nonce?:string) {
-    return browser.get(`set-new-password?id=${id}&nonce=${nonce}`);
-  }
-
-  setPassword(value: string) {
-    return this.passwordInput.clear().sendKeys(value);
-  }
-
-  setRepeatPassword(value: string) {
-    return this.repeatPasswordInput.clear().sendKeys(value);
-  }
-
-  submitForm() {
-    return this.submitButton.sendKeys(protractor.Key.ENTER);
-  }
-
-  getAllErrorMessages() {
+  private getAllErrorMessages(): ElementArrayFinder {
     return element.all(by.css('.error-group'));
   }
 
-  getAllAlerts() {
+  private getAllAlerts(): ElementArrayFinder {
     return element.all(by.css('.alert'));
   }
 
-  getAllFormElements() {
+  private getAllFormElements(): ElementArrayFinder {
     return element.all(by.css('.form-group'));
   }
 
-  hasErrorMessages() {
-    return this.getAllErrorMessages().count().then(value => {
-      return value > 0;
-    });
+  public getPage(id?: string, nonce?: string): Promise<void> {
+    return browser.get(`set-new-password?id=${id}&nonce=${nonce}`);
   }
 
-  hasAlertMessages() {
+  public setPassword(value: string): Promise<void> {
+    return this.passwordInput.clear().sendKeys(value);
+  }
+
+  public setRepeatPassword(value: string): Promise<void> {
+    return this.repeatPasswordInput.clear().sendKeys(value);
+  }
+
+  public submitForm(): Promise<void> {
+    return this.submitButton.sendKeys(protractor.Key.ENTER);
+  }
+
+  public hasAlertMessages(): Promise<boolean> {
     return this.getAllAlerts().count().then(value => {
       return value > 0;
     });
   }
 
-  hasFormElements(){
+  public hasFormElements(): Promise<boolean> {
     return this.getAllFormElements().count().then(value => {
       return value > 0;
     });
   }
 
-  formIsValid(){
+  public formIsValid(): Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });

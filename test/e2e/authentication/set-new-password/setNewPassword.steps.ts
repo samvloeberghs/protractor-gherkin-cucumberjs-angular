@@ -1,77 +1,80 @@
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
+import {binding, given, when, then} from "cucumber-tsflow";
+
 import {SetNewPasswordPageObject} from './setNewPassword.page';
 
-module.exports = function () {
+@binding()
+class SetNewPasswordSteps {
 
-
-  let setNewPasswordPageObject = new SetNewPasswordPageObject();
+  private setNewPasswordPageObject: SetNewPasswordPageObject = new SetNewPasswordPageObject();
 
   // the id & nonce in the set new password link
-  let currentId;
-  let currentNonce;
+  private currentId: string;
+  private currentNonce: string;
 
-  /*
-   this.Then(/^the register form is validated '(.*)'$/, function (valid, callback) {
-   valid = valid === 'true';
-   expect(registerPageObject.hasErrorMessages()).to.become(valid).and.notify(callback);
-   });
-   */
-
-  this.setDefaultTimeout(60 * 1000);
-  
-
-  this.Given(/^'(.*)' is the provided nonce in the email link$/, (nonce, callback) => {
-    currentNonce = nonce;
+  @given(/^'(.*)' is the provided nonce in the email link$/)
+  private givenNonce(nonce: string, callback: Function): void {
+    this.currentNonce = nonce;
     callback();
-  });
-  this.Given(/^'(.*)' is the id representing the user in the email link$/, (id, callback) => {
-    currentId = id;
-    callback();
-  });
+  };
 
-  this.When(/^using the link to the set new password page$/, (callback) => {
-    setNewPasswordPageObject.getPage(currentId, currentNonce);
+  @given(/^'(.*)' is the id representing the user in the email link$/)
+  private givenId(id: string, callback: Function): void {
+    this.currentId = id;
     callback();
-  });
+  };
 
-  this.Then(/^the set new password request is validated '(.*)'$/, (valid, callback) => {
-    valid = valid === 'true';
-    currentId = undefined;
-    currentNonce = undefined;
-    //expect(setNewPasswordPageObject.hasFormElements()).to.become(!valid);
-    expect(setNewPasswordPageObject.hasAlertMessages()).to.become(!valid).and.notify(callback);
-  });
+  @when(/^using the link to the set new password page$/)
+  private whenGetPage(callback: Function): void {
+    this.setNewPasswordPageObject.getPage(this.currentId, this.currentNonce);
+    callback();
+  };
+
+  @then(/^the set new password request is validated '(.*)'$/)
+  private thenRequestIsValidated(valid: string, callback: Function): void {
+    let isValid = valid === 'true';
+    this.currentId = undefined;
+    this.currentNonce = undefined;
+    expect(this.setNewPasswordPageObject.hasAlertMessages()).to.become(!isValid).and.notify(callback);
+  };
 
   ///
   // ***
   ///
 
-  this.Given(/^user clicks the valid set new password link$/, (callback) => {
-    setNewPasswordPageObject.getPage('1', '123');
-    expect(setNewPasswordPageObject.hasFormElements()).to.become(true).and.notify(callback);
-    // callback();
-  });
-  this.Given(/^'(.*)' is the provided new password in the set new password form$/, (password, callback) => {
-    setNewPasswordPageObject.setPassword(password);
+  @given(/^user clicks the valid set new password link$/)
+  private givenUserClicksTheSetNewPasswordLink(callback: Function): void {
+    this.setNewPasswordPageObject.getPage('1', '123');
+    expect(this.setNewPasswordPageObject.hasFormElements()).to.become(true).and.notify(callback);
+    //callback();
+  };
+
+  @given(/^'(.*)' is the provided new password in the set new password form$/)
+  private givenPassword(password: string, callback: Function): void {
+    this.setNewPasswordPageObject.setPassword(password);
     callback();
-  });
-  this.Given(/^'(.*)' is the repeated new password in the set new password form$/, (repeatPassword, callback) => {
-    setNewPasswordPageObject.setRepeatPassword(repeatPassword);
+  };
+
+  @given(/^'(.*)' is the repeated new password in the set new password form$/)
+  private givenRepeatPassword(repeatPassword: string, callback: Function): void {
+    this.setNewPasswordPageObject.setRepeatPassword(repeatPassword);
     callback();
-  });
-
-
-  this.When(/^submitting the set new password form$/, (callback) => {
-    setNewPasswordPageObject.submitForm();
+  };
+  
+  @when(/^submitting the set new password form$/)
+  private whenSubmitForm(callback: Function): void {
+    this.setNewPasswordPageObject.submitForm();
     callback();
-  });
+  };
 
-  this.Then(/^the set new password form is validated '(.*)'$/, (valid, callback) => {
-    valid = valid === 'true';
-    expect(setNewPasswordPageObject.formIsValid()).to.become(valid).and.notify(callback);
-  });
+  @then(/^the set new password form is validated '(.*)'$/)
+  private thenNewPasswordFormIsValidated(valid: string, callback: Function): void {
+    let isValid = valid === 'true';
+    expect(this.setNewPasswordPageObject.formIsValid()).to.become(isValid).and.notify(callback);
+  };
 
+}
 
-};
+export = SetNewPasswordSteps;

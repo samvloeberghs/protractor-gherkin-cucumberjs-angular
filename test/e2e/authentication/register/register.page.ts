@@ -1,3 +1,6 @@
+import ElementArrayFinder = protractor.ElementArrayFinder;
+import Promise = webdriver.promise.Promise;
+
 export class RegisterPageObject {
 
   private form;
@@ -24,37 +27,31 @@ export class RegisterPageObject {
 
   }
 
-  setName(value: string) {
-    return this.nameInput.clear().sendKeys(value);
-  }
-
-  setEmail(value: string) {
-    return this.emailInput.clear().sendKeys(value);
-  }
-
-  setPassword(value: string) {
-    return this.passwordInput.clear().sendKeys(value);
-  }
-
-  setRepeatPassword(value: string) {
-    return this.repeatPasswordInput.clear().sendKeys(value);
-  }
-
-  submitForm() {
-    return this.submitButton.sendKeys(protractor.Key.ENTER);
-  }
-
-  getAllErrorMessages() {
+  private getAllErrorMessages(): ElementArrayFinder {
     return element.all(by.css('.error-group'));
   }
 
-  hasErrorMessages() {
-    return this.getAllErrorMessages().count().then(value => {
-      return value > 0;
-    });
+  public setName(value: string): Promise<void> {
+    return this.nameInput.clear().sendKeys(value);
   }
 
-  formIsValid(){
+  public setEmail(value: string): Promise<void> {
+    return this.emailInput.clear().sendKeys(value);
+  }
+
+  public setPassword(value: string): Promise<void> {
+    return this.passwordInput.clear().sendKeys(value);
+  }
+
+  public setRepeatPassword(value: string): Promise<void> {
+    return this.repeatPasswordInput.clear().sendKeys(value);
+  }
+
+  public submitForm(): Promise<void> {
+    return this.submitButton.sendKeys(protractor.Key.ENTER);
+  }
+
+  public formIsValid(): Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });

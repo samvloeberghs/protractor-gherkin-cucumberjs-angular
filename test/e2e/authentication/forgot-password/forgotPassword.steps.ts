@@ -1,38 +1,43 @@
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
+import {binding, given, when, then} from "cucumber-tsflow";
+
 import {ForgotPasswordPageObject} from './forgotPassword.page';
 import {LoginPageObject} from '../login';
 import {AuthenticationPageObject} from '../authentication.page';
 
-module.exports = function () {
-  
-  let authenticationModule = new AuthenticationPageObject();
-  let loginPageObject = new LoginPageObject();
-  let forgotPasswordPageObject = new ForgotPasswordPageObject();
+@binding()
+class ForgotPasswordSteps {
 
-  this.setDefaultTimeout(60 * 1000);
+  private authenticationModule: AuthenticationPageObject = new AuthenticationPageObject();
+  private loginPageObject: LoginPageObject = new LoginPageObject();
+  private forgotPasswordPageObject: ForgotPasswordPageObject = new ForgotPasswordPageObject();
 
-  this.Given(/^user clicks the forgot password link$/, (callback) => {
-    authenticationModule.goToLogin();
-    loginPageObject.navigateToForgotPasswordPage();
+  @given(/^user clicks the forgot password link$/)
+  private givenUserClicksTheForgotPasswordLink(callback: Function): void {
+    this.authenticationModule.goToLoginPage();
+    this.loginPageObject.navigateToForgotPasswordPage();
     callback();
-  });
+  };
 
-  this.Given(/^'(.*)' is the user email used in the forgot password form$/, function (email, callback) {
-    forgotPasswordPageObject.setEmail(email);
+  @given(/^'(.*)' is the user email used in the forgot password form$/)
+  private givenUserEmail(email: string, callback: Function): void {
+    this.forgotPasswordPageObject.setEmail(email);
     callback();
-  });
+  };
 
-  this.When(/^submitting the forgot password form$/, (callback) => {
-    forgotPasswordPageObject.submitForm();
+  @when(/^submitting the forgot password form$/)
+  private whenSubmitForm(callback: Function): void {
+    this.forgotPasswordPageObject.submitForm();
     callback();
-  });
+  };
 
-  this.Then(/^the forgot password form is validated '(.*)'$/, function (valid, callback) {
-    valid = valid === 'true';
-    expect(forgotPasswordPageObject.formIsValid()).to.become(valid).and.notify(callback);
-  });
+  @then(/^the forgot password form is validated '(.*)'$/)
+  private thenFormIsValidated(valid: string, callback: Function): void {
+    let isValid = valid === 'true';
+    expect(this.forgotPasswordPageObject.formIsValid()).to.become(isValid).and.notify(callback);
+  };
+}
 
-
-};
+export = ForgotPasswordSteps;

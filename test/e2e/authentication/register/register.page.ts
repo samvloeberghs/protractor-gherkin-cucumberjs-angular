@@ -27,34 +27,34 @@ export class RegisterPageObject {
 
   }
 
-  private getAllErrorMessages(): ElementArrayFinder {
-    return element.all(by.css('.error-group'));
-  }
-
-  public setName(value: string): Promise<void> {
+  setName(value: string): Promise<void> {
     return this.nameInput.clear().sendKeys(value);
   }
 
-  public setEmail(value: string): Promise<void> {
+  setEmail(value: string): Promise<void> {
     return this.emailInput.clear().sendKeys(value);
   }
 
-  public setPassword(value: string): Promise<void> {
+  setPassword(value: string): Promise<void> {
     return this.passwordInput.clear().sendKeys(value);
   }
 
-  public setRepeatPassword(value: string): Promise<void> {
+  setRepeatPassword(value: string): Promise<void> {
     return this.repeatPasswordInput.clear().sendKeys(value);
   }
 
-  public submitForm(): Promise<void> {
+  submitForm(): Promise<void> {
     return this.submitButton.sendKeys(protractor.Key.ENTER);
   }
 
-  public formIsValid(): Promise<boolean> {
+  formIsValid(): Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });
+  }
+
+  private getAllErrorMessages(): ElementArrayFinder {
+    return element.all(by.css('.error-group'));
   }
 
 }

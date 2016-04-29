@@ -23,6 +23,40 @@ export class SetNewPasswordPageObject {
 
   }
 
+  getPage(id?: string, nonce?: string): Promise<void> {
+    return browser.get(`set-new-password?id=${id}&nonce=${nonce}`);
+  }
+
+  setPassword(value: string): Promise<void> {
+    return this.passwordInput.clear().sendKeys(value);
+  }
+
+  setRepeatPassword(value: string): Promise<void> {
+    return this.repeatPasswordInput.clear().sendKeys(value);
+  }
+
+  submitForm(): Promise<void> {
+    return this.submitButton.sendKeys(protractor.Key.ENTER);
+  }
+
+  hasAlertMessages(): Promise<boolean> {
+    return this.getAllAlerts().count().then(value => {
+      return value > 0;
+    });
+  }
+
+  hasFormElements(): Promise<boolean> {
+    return this.getAllFormElements().count().then(value => {
+      return value > 0;
+    });
+  }
+
+  formIsValid(): Promise<boolean> {
+    return this.getAllErrorMessages().count().then(value => {
+      return value === 0;
+    });
+  }
+
   private getAllErrorMessages(): ElementArrayFinder {
     return element.all(by.css('.error-group'));
   }
@@ -33,40 +67,6 @@ export class SetNewPasswordPageObject {
 
   private getAllFormElements(): ElementArrayFinder {
     return element.all(by.css('.form-group'));
-  }
-
-  public getPage(id?: string, nonce?: string): Promise<void> {
-    return browser.get(`set-new-password?id=${id}&nonce=${nonce}`);
-  }
-
-  public setPassword(value: string): Promise<void> {
-    return this.passwordInput.clear().sendKeys(value);
-  }
-
-  public setRepeatPassword(value: string): Promise<void> {
-    return this.repeatPasswordInput.clear().sendKeys(value);
-  }
-
-  public submitForm(): Promise<void> {
-    return this.submitButton.sendKeys(protractor.Key.ENTER);
-  }
-
-  public hasAlertMessages(): Promise<boolean> {
-    return this.getAllAlerts().count().then(value => {
-      return value > 0;
-    });
-  }
-
-  public hasFormElements(): Promise<boolean> {
-    return this.getAllFormElements().count().then(value => {
-      return value > 0;
-    });
-  }
-
-  public formIsValid(): Promise<boolean> {
-    return this.getAllErrorMessages().count().then(value => {
-      return value === 0;
-    });
   }
 
 }

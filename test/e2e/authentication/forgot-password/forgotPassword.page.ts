@@ -21,22 +21,22 @@ export class ForgotPasswordPageObject {
 
   }
 
-  private getAllErrorMessages(): ElementArrayFinder {
-    return element.all(by.css('.error-group'));
-  }
-
-  public setEmail(value: string): Promise<void> {
+  setEmail(value: string): Promise<void> {
     return this.emailInput.clear().sendKeys(value);
   }
 
-  public submitForm(): Promise<void> {
+  submitForm(): Promise<void> {
     return this.submitButton.sendKeys(protractor.Key.ENTER);
   }
 
-  public formIsValid(): Promise<boolean> {
+  formIsValid(): Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });
+  }
+
+  private getAllErrorMessages(): ElementArrayFinder {
+    return element.all(by.css('.error-group'));
   }
 
 }

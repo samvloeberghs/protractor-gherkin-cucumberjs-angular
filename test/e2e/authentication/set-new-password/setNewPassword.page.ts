@@ -1,3 +1,6 @@
+import ElementArrayFinder = protractor.ElementArrayFinder;
+import Promise = webdriver.promise.Promise;
+
 export class SetNewPasswordPageObject {
 
   private form;
@@ -20,56 +23,50 @@ export class SetNewPasswordPageObject {
 
   }
 
-  getPage(id?: string, nonce?:string) {
+  getPage(id?: string, nonce?: string): Promise<void> {
     return browser.get(`set-new-password?id=${id}&nonce=${nonce}`);
   }
 
-  setPassword(value: string) {
+  setPassword(value: string): Promise<void> {
     return this.passwordInput.clear().sendKeys(value);
   }
 
-  setRepeatPassword(value: string) {
+  setRepeatPassword(value: string): Promise<void> {
     return this.repeatPasswordInput.clear().sendKeys(value);
   }
 
-  submitForm() {
+  submitForm(): Promise<void> {
     return this.submitButton.sendKeys(protractor.Key.ENTER);
   }
 
-  getAllErrorMessages() {
-    return element.all(by.css('.error-group'));
-  }
-
-  getAllAlerts() {
-    return element.all(by.css('.alert'));
-  }
-
-  getAllFormElements() {
-    return element.all(by.css('.form-group'));
-  }
-
-  hasErrorMessages() {
-    return this.getAllErrorMessages().count().then(value => {
-      return value > 0;
-    });
-  }
-
-  hasAlertMessages() {
+  hasAlertMessages(): Promise<boolean> {
     return this.getAllAlerts().count().then(value => {
       return value > 0;
     });
   }
 
-  hasFormElements(){
+  hasFormElements(): Promise<boolean> {
     return this.getAllFormElements().count().then(value => {
       return value > 0;
     });
   }
 
-  formIsValid(){
+  formIsValid(): Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });
+  }
+
+  private getAllErrorMessages(): ElementArrayFinder {
+    return element.all(by.css('.error-group'));
+  }
+
+  private getAllAlerts(): ElementArrayFinder {
+    return element.all(by.css('.alert'));
+  }
+
+  private getAllFormElements(): ElementArrayFinder {
+    return element.all(by.css('.form-group'));
   }
 
 }

@@ -1,3 +1,6 @@
+import ElementArrayFinder = protractor.ElementArrayFinder;
+import Promise = webdriver.promise.Promise;
+
 export class LoginPageObject {
 
   private form;
@@ -20,40 +23,33 @@ export class LoginPageObject {
 
   }
 
-  navigateToForgotPasswordPage() {
+  navigateToForgotPasswordPage(): Promise<void> {
     return this.goToForgotPasswordLink.click();
   }
 
-  navigateToRegisterPage() {
+  navigateToRegisterPage(): Promise<void> {
     return this.goToRegisterLink.click();
   }
 
-  setEmail(value: string) {
+  setEmail(value: string): Promise<void> {
     return this.emailInput.clear().sendKeys(value);
   }
 
-  setPassword(value: string) {
+  setPassword(value: string): Promise<void> {
     return this.passwordInput.clear().sendKeys(value);
   }
 
-  submitForm() {
+  submitForm(): Promise<void> {
     return this.submitButton.sendKeys(protractor.Key.ENTER);
   }
 
-  getAllErrorMessages() {
-    return element.all(by.css('.error-group'));
-  }
-
-  hasErrorMessages() {
-    return this.getAllErrorMessages().count().then(value => {
-      return value > 0;
-    });
-  }
-
-  formIsValid(){
+  formIsValid(): Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });
   }
 
+  private getAllErrorMessages(): ElementArrayFinder {
+    return element.all(by.css('.error-group'));
+  }
 }

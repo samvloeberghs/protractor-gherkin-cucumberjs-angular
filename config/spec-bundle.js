@@ -26,8 +26,8 @@ require('zone.js/dist/jasmine-patch.js');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/mergeMap');
 
-var testing = require('angular2/testing');
-var browser = require('angular2/platform/testing/browser');
+var testing = require('@angular/core/testing');
+var browser = require('@angular/platform-browser/testing/browser');
 
 testing.setBaseTestProviders(
   browser.TEST_BROWSER_PLATFORM_PROVIDERS,

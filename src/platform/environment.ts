@@ -2,10 +2,10 @@
 import {
   ELEMENT_PROBE_PROVIDERS,
   ELEMENT_PROBE_PROVIDERS_PROD_MODE
-} from 'angular2/platform/browser';
+} from '@angular/platform-browser/src/dom/debug/ng_probe';
 
 // Angular 2
-import {enableProdMode} from 'angular2/core';
+import {enableProdMode} from '@angular/core';
 
 // Environment Providers
 var PROVIDERS = [];

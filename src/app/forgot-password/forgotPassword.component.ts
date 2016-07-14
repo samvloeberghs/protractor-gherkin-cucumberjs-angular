@@ -1,5 +1,5 @@
-import {Component, OnInit} from 'angular2/core';
-import {FormBuilder, Validators, ControlGroup} from 'angular2/common';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators, ControlGroup} from '@angular/common';
 
 import {EmailValidator} from '../email-validator';
 

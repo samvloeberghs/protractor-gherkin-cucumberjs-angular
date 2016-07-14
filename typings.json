@@ -8,6 +8,7 @@
     "chai": "registry:dt/chai#3.4.0+20160317120654",
     "chai-as-promised": "registry:dt/chai-as-promised#0.0.0+20160317120654",
     "core-js": "registry:dt/core-js#0.0.0+20160317120654",
+    "cucumber": "registry:dt/cucumber#0.0.0+20160620145537",
     "hammerjs": "github:DefinitelyTyped/DefinitelyTyped/hammerjs/hammerjs.d.ts#74a4dfc1bc2dfadec47b8aae953b28546cb9c6b7",
     "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#4b36b94d5910aa8a4d20bdcd5bd1f9ae6ad18d3c",
     "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#8cf8164641be73e8f1e652c2a5b967c7210b6729",

@@ -1,6 +1,6 @@
-import {Component, OnInit} from 'angular2/core';
-import {Router, RouteParams} from 'angular2/router';
-import {FormBuilder, Validators, ControlGroup} from 'angular2/common';
+import {Component, OnInit} from '@angular/core';
+import {Router, RouteParams} from '@angular/router-deprecated';
+import {FormBuilder, Validators, ControlGroup} from '@angular/common';
 
 @Component({
   selector: 'set-new-password',

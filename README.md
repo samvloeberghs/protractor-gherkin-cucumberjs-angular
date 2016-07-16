@@ -18,7 +18,7 @@ npm install
 npm start 
 
 # run the tests ( this will both run the E2E & unit tests ) 
-npm run ci
+npm run e2e
 ```
 
 ## CucumberJS

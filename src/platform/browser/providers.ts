@@ -15,11 +15,6 @@ import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 
-// Angular 2 Material
-// import {MdRadioDispatcher} from '@angular2-material/radio/radio_dispatcher';
-// const MATERIAL_PROVIDERS = [
-//   MdRadioDispatcher
-// ];
 
 /*
 * Application Providers/Directives/Pipes
@@ -28,7 +23,6 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 export const APPLICATION_PROVIDERS = [
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
-  // ...MATERIAL_PROVIDERS,
   ...ROUTER_PROVIDERS,
   provide(LocationStrategy, { useClass: PathLocationStrategy }),
 ];

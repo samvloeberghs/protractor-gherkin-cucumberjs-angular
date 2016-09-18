@@ -1,7 +1,11 @@
 import {FormControl} from "@angular/forms";
 
+interface EmailValidatorFn {
+  [key: string]: boolean;
+}
+
 export class EmailValidator {
-  static validEmail(control: FormControl) {
+  static validEmail(control: FormControl): EmailValidatorFn {
     let value = control.value;
     /* tslint:disable */
     const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

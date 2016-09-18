@@ -8,9 +8,7 @@ export class EmailValidator {
     /* tslint:enable */
     if (value.length <= 5 || !EMAIL_REGEXP.test(control.value)) {
       return {
-        invalidEmail: {
-          valid: true
-        }
+        invalidEmail:true
       };
     }
     return null;

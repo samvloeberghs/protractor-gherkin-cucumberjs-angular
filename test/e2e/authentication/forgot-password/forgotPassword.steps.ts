@@ -1,12 +1,12 @@
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
-import {binding, given, when, then} from "cucumber-tsflow";
+import { binding, given, when, then } from "cucumber-tsflow";
 import Callback = cucumber.CallbackStepDefinition;
 
-import {ForgotPasswordPageObject} from './forgotPassword.page';
-import {LoginPageObject} from '../login';
-import {AuthenticationPageObject} from '../authentication.page';
+import { ForgotPasswordPageObject } from './forgotPassword.page';
+import { LoginPageObject } from '../login';
+import { AuthenticationPageObject } from '../authentication.page';
 
 @binding()
 class ForgotPasswordSteps {

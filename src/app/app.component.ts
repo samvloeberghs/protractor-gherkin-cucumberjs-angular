@@ -1,6 +1,6 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {AppState} from './app.service';
+import { AppState } from './app.service';
 
 /*
  * App Component

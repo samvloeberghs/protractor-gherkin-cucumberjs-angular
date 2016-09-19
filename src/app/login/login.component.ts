@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 
-import {EmailValidator} from '../email-validator';
+import { EmailValidator } from '../email-validator';
 
 @Component({
   selector: 'login',

@@ -3,53 +3,53 @@ import Promise = webdriver.promise.Promise;
 
 export class LoginPageObject {
 
-  private form;
-  private passwordInput;
-  private emailInput;
-  private submitButton;
-  private goToForgotPasswordLink;
-  private goToRegisterLink;
+  private _form;
+  private _passwordInput;
+  private _emailInput;
+  private _submitButton;
+  private _goToForgotPasswordLink;
+  private _goToRegisterLink;
 
   constructor() {
 
     // get the container wrapper
-    this.form = element(by.id('login-form'));
-    this.passwordInput = this.form.element(by.id('login-password'));
-    this.emailInput = this.form.element(by.id('login-email'));
-    this.submitButton = this.form.element(by.id('login-submit'));
+    this._form = element(by.id('login-form'));
+    this._passwordInput = this._form.element(by.id('login-password'));
+    this._emailInput = this._form.element(by.id('login-email'));
+    this._submitButton = this._form.element(by.id('login-submit'));
 
-    this.goToForgotPasswordLink = element(by.id('login-forgot-password-link'));
-    this.goToRegisterLink = element(by.id('login-register-link'));
+    this._goToForgotPasswordLink = element(by.id('login-forgot-password-link'));
+    this._goToRegisterLink = element(by.id('login-register-link'));
 
   }
 
   navigateToForgotPasswordPage(): Promise<void> {
-    return this.goToForgotPasswordLink.click();
+    return this._goToForgotPasswordLink.click();
   }
 
   navigateToRegisterPage(): Promise<void> {
-    return this.goToRegisterLink.click();
+    return this._goToRegisterLink.click();
   }
 
   setEmail(value: string): Promise<void> {
-    return this.emailInput.clear().sendKeys(value);
+    return this._emailInput.clear().sendKeys(value);
   }
 
   setPassword(value: string): Promise<void> {
-    return this.passwordInput.clear().sendKeys(value);
+    return this._passwordInput.clear().sendKeys(value);
   }
 
   submitForm(): Promise<void> {
-    return this.submitButton.sendKeys(protractor.Key.ENTER);
+    return this._submitButton.sendKeys(protractor.Key.ENTER);
   }
 
   formIsValid(): Promise<boolean> {
-    return this.getAllErrorMessages().count().then(value => {
+    return this._getAllErrorMessages().count().then(value => {
       return value === 0;
     });
   }
 
-  private getAllErrorMessages(): ElementArrayFinder {
+  private _getAllErrorMessages(): ElementArrayFinder {
     return element.all(by.css('.error-group'));
   }
 }

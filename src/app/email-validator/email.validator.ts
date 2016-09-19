@@ -1,4 +1,4 @@
-import {FormControl} from "@angular/forms";
+import { FormControl } from "@angular/forms";
 
 interface EmailValidatorFn {
   [key: string]: boolean;

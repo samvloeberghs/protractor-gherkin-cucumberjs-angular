@@ -45,7 +45,7 @@ export class Register implements OnInit {
         )
       },
       {
-        validator: this.matchingPasswords('password', 'repeatPassword')
+        validator: this._matchingPasswords('password', 'repeatPassword')
       }
     );
 
@@ -63,7 +63,7 @@ export class Register implements OnInit {
 
   }
 
-  private matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
+  private _matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
 
     return (group: FormGroup): {[key: string]: any} => {
       let password = group.controls[passwordKey];

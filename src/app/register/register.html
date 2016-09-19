@@ -4,14 +4,14 @@
       <div class="panel-heading">
         <h3 class="panel-title"><strong>Register</strong></h3>
         <div>
-          <a [routerLink]=" ['/ForgotPassword']" id="register-forgot-password-link">Forgot password?</a>
+          <a [routerLink]=" ['/forgot-password']" id="register-forgot-password-link">Forgot password?</a>
         </div>
       </div>
 
       <div class="panel-body">
 
         <form role="form" novalidate id="register-form"
-              [ngFormModel]="form" (submit)="submit($event)" *ngIf="!registered">
+              [formGroup]="form" (submit)="submit($event)" *ngIf="!registered">
 
           <div class="form-group" [ngClass]="{'has-error': ( submitted && !form.controls.name.valid )}">
 
@@ -19,7 +19,7 @@
               <label class="input-group-addon" for="register-name"><i class="glyphicon glyphicon-user"></i></label>
               <input id="register-name" type="text" class="form-control" name="name" placeholder="Your name"
                      required
-                     ngControl="name">
+                     formControlName="name">
             </div>
 
             <div class="error-group" *ngIf="( submitted && !form.controls.name.valid )">
@@ -37,7 +37,7 @@
               <input id="register-email" type="text" class="form-control" name="email"
                      placeholder="Your email"
                      required
-                     ngControl="email">
+                     formControlName="email">
             </div>
 
             <div class="error-group" *ngIf="( submitted && !form.controls.email.valid )">
@@ -59,7 +59,7 @@
               <input id="register-password" type="password" class="form-control" name="password"
                      placeholder="Your password"
                      required
-                     ngControl="password">
+                     formControlName="password">
             </div>
 
             <div class="error-group" *ngIf="( submitted && !form.controls.password.valid )">
@@ -82,7 +82,7 @@
               <input id="register-repeat-password" type="password" class="form-control" name="password"
                      placeholder="Repeat your password"
                      required
-                     ngControl="repeatPassword">
+                     formControlName="repeatPassword">
             </div>
 
             <div class="error-group"
@@ -106,7 +106,7 @@
 
             <div>
               Already have an account?
-              <a [routerLink]=" ['/Login']" id="register-login-link">
+              <a [routerLink]=" ['/login']" id="register-login-link">
                 Login Here
               </a>
             </div>

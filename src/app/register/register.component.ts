@@ -1,19 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators, ControlGroup} from '@angular/common';
+import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 
 import {EmailValidator} from '../email-validator';
 
 @Component({
   selector: 'register',
   providers: [],
-  directives: [],
-  pipes: [],
   styles: [require('./register.scss')],
   template: require('./register.html')
 })
 export class Register implements OnInit {
 
-  form: ControlGroup;
+  form: FormGroup;
   submitted = false;
   registered = false;
 
@@ -23,28 +21,28 @@ export class Register implements OnInit {
   ngOnInit() {
 
     this.form = this._fb.group({
-        name: [
+        name: new FormControl(
           '',
-          Validators.required,
-        ],
-        email: [
+          Validators.required
+        ),
+        email: new FormControl(
           '',
           Validators.compose([
             Validators.required,
-            EmailValidator.validEmail,
+            EmailValidator.validEmail
           ])
-        ],
-        password: [
+        ),
+        password: new FormControl(
           '',
           Validators.compose([
             Validators.required,
-            Validators.minLength(7),
-          ]),
-        ],
-        repeatPassword: [
+            Validators.minLength(7)
+          ])
+        ),
+        repeatPassword: new FormControl(
           '',
-          Validators.required,
-        ]
+          Validators.required
+        )
       },
       {
         validator: this.matchingPasswords('password', 'repeatPassword')
@@ -67,7 +65,7 @@ export class Register implements OnInit {
 
   private matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
 
-    return (group: ControlGroup): {[key: string]: any} => {
+    return (group: FormGroup): {[key: string]: any} => {
       let password = group.controls[passwordKey];
       let repeatPassword = group.controls[repeatPasswordKey];
       if (password.value !== repeatPassword.value) {

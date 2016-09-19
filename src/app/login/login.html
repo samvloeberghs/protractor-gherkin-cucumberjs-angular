@@ -4,14 +4,14 @@
       <div class="panel-heading">
         <h3 class="panel-title"><strong>Login</strong></h3>
         <div>
-          <a [routerLink]=" ['/ForgotPassword']" id="login-forgot-password-link">Forgot password?</a>
+          <a [routerLink]=" ['/forgot-password']" id="login-forgot-password-link">Forgot password?</a>
         </div>
       </div>
 
       <div class="panel-body">
 
         <form role="form" novalidate id="login-form"
-              [ngFormModel]="form" (submit)="submit($event)"
+              [formGroup]="form" (submit)="submit($event)"
               *ngIf="!authenticated">
 
           <div class="form-group" [ngClass]="{'has-error': ( submitted && !form.controls.email.valid )}">
@@ -20,7 +20,7 @@
               <input id="login-email" type="text" class="form-control" name="login-email"
                      placeholder="Your email"
                      required
-                     ngControl="email">
+                     formControlName="email">
             </div>
 
             <div class="error-group" *ngIf="( submitted && !form.controls.email.valid )">
@@ -42,7 +42,7 @@
               <input id="login-password" type="password" class="form-control" name="login-password"
                      placeholder="Your password"
                      required
-                     ngControl="password">
+                     formControlName="password">
             </div>
 
             <div class="error-group" *ngIf="( submitted && !form.controls.password.valid )">
@@ -61,7 +61,7 @@
 
             <div>
               Don't have an account?
-              <a [routerLink]=" ['/Register']" id="login-register-link">
+              <a [routerLink]=" ['/register']" id="login-register-link">
                 Register here
               </a>
             </div>

@@ -1,49 +1,48 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, RouteParams} from '@angular/router-deprecated';
-import {FormBuilder, Validators, ControlGroup} from '@angular/common';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 
 @Component({
   selector: 'set-new-password',
   providers: [],
-  directives: [],
-  pipes: [],
   styles: [require('./setNewPassword.scss')],
   template: require('./setNewPassword.html')
 })
 export class SetNewPassword implements OnInit {
 
-  form: ControlGroup;
+  form: FormGroup;
   submitted = false;
   validRequest = false;
   newPasswordSet = false;
 
   constructor(private _fb: FormBuilder,
               private _router: Router,
-              private _routeParams: RouteParams) {
+              private _activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
 
     this.form = this._fb.group({
-        password: [
+        password: new FormControl(
           '',
           Validators.compose([
             Validators.required,
-            Validators.minLength(7),
-          ]),
-        ],
-        repeatPassword: [
+            Validators.minLength(7)
+          ])
+        ),
+        repeatPassword: new FormControl(
           '',
-          Validators.required,
-        ]
+          Validators.required
+        )
       },
       {
         validator: this.matchingPasswords('password', 'repeatPassword')
       }
     );
 
-    this.validRequest = !!this._routeParams.get('id') && !!this._routeParams.get('nonce');
-
+    this._activatedRoute.queryParams.subscribe(params => {
+      this.validRequest = !!params['id'] && !!params['nonce'];
+    });
   }
 
   submit(event: any) {
@@ -61,15 +60,15 @@ export class SetNewPassword implements OnInit {
 
   private _navigateToLogin() {
 
-    setTimeout(()=> {
-      this._router.navigate(['/Login']);
+    setTimeout(() => {
+      this._router.navigate(['/login']);
     }, 3000);
 
   }
 
   private matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
 
-    return (group: ControlGroup): {[key: string]: any} => {
+    return (group: FormGroup): {[key: string]: any} => {
       let password = group.controls[passwordKey];
       let repeatPassword = group.controls[repeatPasswordKey];
       if (password.value !== repeatPassword.value) {

@@ -1,3 +1,5 @@
+import Promise = webdriver.promise.Promise;
+
 export class AuthenticationPageObject {
 
   private pages: Object;
@@ -13,27 +15,27 @@ export class AuthenticationPageObject {
 
   }
 
-  public openApp(): webdriver.promise.Promise<void> {
+  public openApp(): Promise<void> {
     return browser.get('');
   }
 
-  public goToLoginPage(): webdriver.promise.Promise<void> {
+  public goToLoginPage(): Promise<void> {
     return browser.get(`${this.pages['login']}`);
   }
 
-  public goToRegisterPage(): webdriver.promise.Promise<void> {
+  public goToRegisterPage(): Promise<void> {
     return browser.get(`${this.pages['register']}`);
   }
 
-  public goToForgotPasswordPage(): webdriver.promise.Promise<void> {
+  public goToForgotPasswordPage(): Promise<void> {
     return browser.get(`${this.pages['forgotPassword']}`);
   }
 
-  public goToSetNewPasswordPage(id?: string, nonce?: string): webdriver.promise.Promise<void> {
+  public goToSetNewPasswordPage(id?: string, nonce?: string): Promise<void> {
     return browser.get(`${this.pages['setNewPassword']}?id=${id}&nonce=${nonce}`);
   }
 
-  public getCurrentUrl(): webdriver.promise.Promise<string> {
+  public getCurrentUrl(): Promise<string> {
     return browser.getCurrentUrl();
   }
 }

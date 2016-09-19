@@ -1,19 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators, ControlGroup} from '@angular/common';
+import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 
 import {EmailValidator} from '../email-validator';
 
 @Component({
   selector: 'login',
   providers: [],
-  directives: [],
-  pipes: [],
   styles: [require('./login.scss')],
   template: require('./login.html')
 })
 export class Login implements OnInit {
 
-  form: ControlGroup;
+  form: FormGroup;
   submitted = false;
   authenticated = false;
 
@@ -23,17 +21,17 @@ export class Login implements OnInit {
   ngOnInit() {
 
     this.form = this._fb.group({
-      email: [
+      email: new FormControl(
         '',
         Validators.compose([
           Validators.required,
-          EmailValidator.validEmail,
+          EmailValidator.validEmail
         ])
-      ],
-      password: [
+      ),
+      password: new FormControl(
         '',
-        Validators.required,
-      ]
+        Validators.required
+      )
     });
 
   }

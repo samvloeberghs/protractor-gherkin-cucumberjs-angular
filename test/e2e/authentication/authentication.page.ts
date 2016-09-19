@@ -1,4 +1,4 @@
-import {browser} from 'protractor/globals';
+import { browser } from 'protractor/globals';
 import Promise = webdriver.promise.Promise;
 
 export class AuthenticationPageObject {

@@ -1,5 +1,5 @@
-import {browser, element, by, protractor} from 'protractor/globals';
-import {ElementArrayFinder} from "protractor";
+import { browser, element, by, protractor } from 'protractor/globals';
+import { ElementArrayFinder } from "protractor";
 import Promise = webdriver.promise.Promise;
 
 export class SetNewPasswordPageObject {

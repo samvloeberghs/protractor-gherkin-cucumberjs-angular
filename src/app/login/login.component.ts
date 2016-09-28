@@ -15,12 +15,12 @@ export class Login implements OnInit {
   submitted = false;
   authenticated = false;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
 
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       email: new FormControl(
         '',
         Validators.compose([

@@ -15,13 +15,13 @@ export class ForgotPassword implements OnInit {
   submitted = false;
   validSubmit = false;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
 
   }
 
   ngOnInit() {
 
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       email: new FormControl('',
         Validators.compose([
           Validators.required,

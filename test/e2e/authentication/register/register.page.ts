@@ -4,57 +4,57 @@ import Promise = webdriver.promise.Promise;
 
 export class RegisterPageObject {
 
-  private _form;
-  private _nameInput;
-  private _emailInput;
-  private _passwordInput;
-  private _repeatPasswordInput;
-  private _submitButton;
-  private _goToForgotPasswordLink;
-  private _goToLoginLink;
+  private form;
+  private nameInput;
+  private emailInput;
+  private passwordInput;
+  private repeatPasswordInput;
+  private submitButton;
+  private goToForgotPasswordLink;
+  private goToLoginLink;
 
   constructor() {
 
     // get the relevant elements
-    this._form = element(by.id('register-form'));
-    this._nameInput = this._form.element(by.id('register-name'));
-    this._emailInput = this._form.element(by.id('register-email'));
-    this._passwordInput = this._form.element(by.id('register-password'));
-    this._repeatPasswordInput = this._form.element(by.id('register-repeat-password'));
-    this._submitButton = this._form.element(by.id('register-submit'));
+    this.form = element(by.id('register-form'));
+    this.nameInput = this.form.element(by.id('register-name'));
+    this.emailInput = this.form.element(by.id('register-email'));
+    this.passwordInput = this.form.element(by.id('register-password'));
+    this.repeatPasswordInput = this.form.element(by.id('register-repeat-password'));
+    this.submitButton = this.form.element(by.id('register-submit'));
 
-    this._goToForgotPasswordLink = element(by.id('register-forgot-password-link'));
-    this._goToLoginLink = element(by.id('register-login-link'));
+    this.goToForgotPasswordLink = element(by.id('register-forgot-password-link'));
+    this.goToLoginLink = element(by.id('register-login-link'));
 
   }
 
   setName(value: string): Promise<void> {
-    return this._nameInput.clear().sendKeys(value);
+    return this.nameInput.clear().sendKeys(value);
   }
 
   setEmail(value: string): Promise<void> {
-    return this._emailInput.clear().sendKeys(value);
+    return this.emailInput.clear().sendKeys(value);
   }
 
   setPassword(value: string): Promise<void> {
-    return this._passwordInput.clear().sendKeys(value);
+    return this.passwordInput.clear().sendKeys(value);
   }
 
   setRepeatPassword(value: string): Promise<void> {
-    return this._repeatPasswordInput.clear().sendKeys(value);
+    return this.repeatPasswordInput.clear().sendKeys(value);
   }
 
   submitForm(): Promise<void> {
-    return this._submitButton.sendKeys(protractor.Key.ENTER);
+    return this.submitButton.sendKeys(protractor.Key.ENTER);
   }
 
   formIsValid(): Promise<boolean> {
-    return this._getAllErrorMessages().count().then(value => {
+    return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });
   }
 
-  private _getAllErrorMessages(): ElementArrayFinder {
+  private getAllErrorMessages(): ElementArrayFinder {
     return element.all(by.css('.error-group'));
   }
 

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { EmailValidator } from '../email-validator';
 
 @Component({
-  selector: 'register',
+  selector: 'sv-register',
   providers: [],
-  styles: [require('./register.scss')],
-  template: require('./register.html')
+  styles: [require('./register.component.scss')],
+  template: require('./register.component.html')
 })
 export class Register implements OnInit {
 
@@ -15,12 +15,12 @@ export class Register implements OnInit {
   submitted = false;
   registered = false;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
 
-    this.form = this._fb.group({
+    this.form = this.fb.group({
         name: new FormControl(
           '',
           Validators.required
@@ -45,7 +45,7 @@ export class Register implements OnInit {
         )
       },
       {
-        validator: this._matchingPasswords('password', 'repeatPassword')
+        validator: this.matchingPasswords('password', 'repeatPassword')
       }
     );
 
@@ -63,7 +63,7 @@ export class Register implements OnInit {
 
   }
 
-  private _matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
+  private matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
 
     return (group: FormGroup): {[key: string]: any} => {
       let password = group.controls[passwordKey];

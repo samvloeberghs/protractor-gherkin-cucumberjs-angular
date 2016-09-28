@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'set-new-password',
+  selector: 'sv-set-new-password',
   providers: [],
-  styles: [require('./setNewPassword.scss')],
-  template: require('./setNewPassword.html')
+  styles: [require('./setNewPassword.component.scss')],
+  template: require('./setNewPassword.component.html')
 })
 export class SetNewPassword implements OnInit {
 
@@ -15,14 +15,14 @@ export class SetNewPassword implements OnInit {
   validRequest = false;
   newPasswordSet = false;
 
-  constructor(private _fb: FormBuilder,
-              private _router: Router,
-              private _activatedRoute: ActivatedRoute) {
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
 
-    this.form = this._fb.group({
+    this.form = this.fb.group({
         password: new FormControl(
           '',
           Validators.compose([
@@ -36,11 +36,11 @@ export class SetNewPassword implements OnInit {
         )
       },
       {
-        validator: this._matchingPasswords('password', 'repeatPassword')
+        validator: this.matchingPasswords('password', 'repeatPassword')
       }
     );
 
-    this._activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe(params => {
       this.validRequest = !!params['id'] && !!params['nonce'];
     });
   }
@@ -52,21 +52,21 @@ export class SetNewPassword implements OnInit {
     if (this.form.valid) {
       console.log(this.form.value);
       this.newPasswordSet = true;
-      this._navigateToLogin();
+      this.navigateToLogin();
     }
     event.preventDefault();
 
   }
 
-  private _navigateToLogin() {
+  private navigateToLogin() {
 
     setTimeout(() => {
-      this._router.navigate(['/login']);
+      this.router.navigate(['/login']);
     }, 3000);
 
   }
 
-  private _matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
+  private matchingPasswords(passwordKey: string, repeatPasswordKey: string) {
 
     return (group: FormGroup): {[key: string]: any} => {
       let password = group.controls[passwordKey];

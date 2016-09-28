@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { EmailValidator } from '../email-validator';
 
 @Component({
-  selector: 'forgot-password',
+  selector: 'sv-forgot-password',
   providers: [],
-  styles: [require('./forgotPassword.scss')],
-  template: require('./forgotPassword.html')
+  styles: [require('./forgotPassword.component.scss')],
+  template: require('./forgotPassword.component.html')
 })
 export class ForgotPassword implements OnInit {
 
@@ -15,13 +15,13 @@ export class ForgotPassword implements OnInit {
   submitted = false;
   validSubmit = false;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
 
   }
 
   ngOnInit() {
 
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       email: new FormControl('',
         Validators.compose([
           Validators.required,

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { Login } from "./login/login.component";
-import { Register } from "./register/register.component";
-import { ForgotPassword } from "./forgot-password/forgotPassword.component";
-import { SetNewPassword } from "./set-new-password/setNewPassword.component";
+import { Login } from './login';
+import { Register } from './register';
+import { ForgotPassword } from './forgot-password';
+import { SetNewPassword } from './set-new-password';
 
 export const ROUTES: Routes = [
   {path: '', component: Login},

@@ -7,10 +7,10 @@ import { AppState } from './app.service';
  * Top Level Component
  */
 @Component({
-  selector: 'app',
+  selector: 'sv-app',
   providers: [],
-  styles: [require('./app.scss')],
-  template: require('./app.html'),
+  styles: [require('./app.component.scss')],
+  template: require('./app.component.html'),
   encapsulation: ViewEncapsulation.None
 })
 

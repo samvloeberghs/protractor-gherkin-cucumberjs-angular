@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { EmailValidator } from '../email-validator';
 
 @Component({
-  selector: 'register',
+  selector: 'sv-register',
   providers: [],
-  styles: [require('./register.scss')],
-  template: require('./register.html')
+  styles: [require('./register.component.scss')],
+  template: require('./register.component.html')
 })
 export class Register implements OnInit {
 

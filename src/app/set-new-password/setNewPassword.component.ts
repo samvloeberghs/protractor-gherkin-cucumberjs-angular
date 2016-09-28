@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'set-new-password',
+  selector: 'sv-set-new-password',
   providers: [],
-  styles: [require('./setNewPassword.scss')],
-  template: require('./setNewPassword.html')
+  styles: [require('./setNewPassword.component.scss')],
+  template: require('./setNewPassword.component.html')
 })
 export class SetNewPassword implements OnInit {
 

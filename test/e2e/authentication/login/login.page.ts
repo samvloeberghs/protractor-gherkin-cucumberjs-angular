@@ -1,5 +1,4 @@
-import { element, by, protractor } from 'protractor/globals';
-import { ElementArrayFinder } from 'protractor';
+import { element, by, protractor, ElementArrayFinder } from 'protractor';
 import Promise = webdriver.promise.Promise;
 
 export class LoginPageObject {

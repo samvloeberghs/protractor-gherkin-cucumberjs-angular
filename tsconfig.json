@@ -20,7 +20,8 @@
       "cucumber",
       "source-map",
       "uglify-js",
-      "webpack"
+      "webpack",
+      "es6-promise"
     ]
   },
   "exclude": [

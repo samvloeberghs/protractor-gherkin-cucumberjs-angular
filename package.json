@@ -70,6 +70,7 @@
   },
   "devDependencies": {
     "@types/cucumber": "0.0.31",
+    "@types/es6-promise": "0.0.32",
     "@types/hammerjs": "^2.0.32",
     "@types/jasmine": "^2.2.33",
     "@types/node": "^6.0.38",
@@ -106,7 +107,7 @@
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.6",
     "postcss-loader": "^0.8.2",
-    "protractor": "^4.0.8",
+    "protractor": "^4.0.9",
     "protractor-cucumber-framework": "^0.6.0",
     "raw-loader": "0.5.1",
     "remap-istanbul": "^0.5.1",

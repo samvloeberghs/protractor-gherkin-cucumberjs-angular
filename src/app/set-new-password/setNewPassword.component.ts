@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styles: [require('./setNewPassword.component.scss')],
   template: require('./setNewPassword.component.html')
 })
-export class SetNewPassword implements OnInit {
+export class SetNewPasswordComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;

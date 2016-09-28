@@ -5,10 +5,10 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent, ROUTES, AppState } from './';
-import { Login } from './login';
-import { Register } from './register';
-import { SetNewPassword } from './set-new-password';
-import { ForgotPassword } from './forgot-password';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+import { SetNewPasswordComponent } from './set-new-password';
+import { ForgotPasswordComponent } from './forgot-password';
 
 const APP_PROVIDERS = [
   AppState
@@ -22,7 +22,7 @@ const APP_PROVIDERS = [
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, {useHash: false})
   ],
-  declarations: [AppComponent, Login, Register, SetNewPassword, ForgotPassword],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, SetNewPasswordComponent, ForgotPasswordComponent],
   bootstrap: [AppComponent],
   providers: [
     APP_PROVIDERS

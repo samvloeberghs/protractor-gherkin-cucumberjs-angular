@@ -9,7 +9,7 @@ import { EmailValidator } from '../email-validator';
   styles: [require('./forgotPassword.component.scss')],
   template: require('./forgotPassword.component.html')
 })
-export class ForgotPassword implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;

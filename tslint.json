@@ -1,70 +1,51 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer/dist/src"
+    "node_modules/codelyzer"
   ],
   "rules": {
-    "component-selector-name": [true, "kebab-case"],
-    "component-selector-type": [true, "element"],
-    "host-parameter-decorator": true,
-    "input-parameter-decorator": true,
-    "output-parameter-decorator": true,
-    "attribute-parameter-decorator": false,
-    "input-property-directive": true,
-    "output-property-directive": true,
-
-    "class-name": true,
-    "curly": false,
-    "eofline": true,
-    "indent": [
+    "directive-selector-name": [
       true,
-      "spaces"
+      "camelCase"
     ],
-    "max-line-length": [
+    "component-selector-name": [
       true,
-      100
+      "kebab-case"
     ],
-    "member-ordering": [
+    "directive-selector-type": [
       true,
-      "public-before-private",
-      "static-before-instance",
-      "variables-before-functions"
+      "attribute"
     ],
-    "no-arg": true,
-    "no-construct": true,
-    "no-duplicate-key": true,
-    "no-duplicate-variable": true,
-    "no-empty": false,
-    "no-eval": true,
-    "trailing-comma": true,
-    "no-trailing-whitespace": true,
-    "no-unused-expression": true,
-    "no-unused-variable": false,
-    "no-unreachable": true,
-    "no-use-before-declare": true,
-    "one-line": [
+    "component-selector-type": [
       true,
-      "check-open-brace",
-      "check-catch",
-      "check-else",
-      "check-whitespace"
+      "element"
     ],
-    "quotemark": [
+    "directive-selector-prefix": [
       true,
-      "single"
+      "sv"
     ],
-    "semicolon": true,
-    "triple-equals": [
+    "component-selector-prefix": [
       true,
-      "allow-null-check"
+      "sv"
     ],
-    "variable-name": false,
-    "whitespace": [
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+    "no-attribute-parameter-decorator": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "no-forward-ref": true,
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "pipe-naming": [
       true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
-    ]
+      "camelCase",
+      "sv"
+    ],
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "import-destructuring-spacing": true,
+    "templates-use-public": true,
+    "no-access-missing-member": true,
+    "invoke-injectable": true
   }
 }

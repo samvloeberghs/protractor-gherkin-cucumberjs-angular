@@ -23,37 +23,37 @@ class RegisterSteps {
   };
 
   @given(/^'(.*)' is the user name used in the register form$/)
-  private givenUsername(name: string, callback: CallbackStepDefinition): void {
+  private givenUsername(name: string, callback: CallbackStepDefinition) {
     this.registerPageObject.setName(name);
     callback();
   };
 
   @given(/^'(.*)' is the user email used in the register form$/)
-  private givenUserEmail(email: string, callback: CallbackStepDefinition): void {
+  private givenUserEmail(email: string, callback: CallbackStepDefinition) {
     this.registerPageObject.setEmail(email);
     callback();
   };
 
   @given(/^'(.*)' is the provided password used in the register form$/)
-  private givenPassword(password: string, callback: CallbackStepDefinition): void {
+  private givenPassword(password: string, callback: CallbackStepDefinition) {
     this.registerPageObject.setPassword(password);
     callback();
   };
 
   @given(/^'(.*)' is the repeated password used in the register form/)
-  private givenRepeatPassword(repeatPassword: string, callback: CallbackStepDefinition): void {
+  private givenRepeatPassword(repeatPassword: string, callback: CallbackStepDefinition) {
     this.registerPageObject.setRepeatPassword(repeatPassword);
     callback();
   };
 
   @when(/^submitting the register form$/)
-  private whenSubmitForm(callback: CallbackStepDefinition): void {
+  private whenSubmitForm(callback: CallbackStepDefinition) {
     this.registerPageObject.submitForm();
     callback();
   };
 
   @then(/^the register form is validated '(.*)'$/)
-  private thenFormIsValidated(valid: string, callback: CallbackStepDefinition): void {
+  private thenFormIsValidated(valid: string, callback: CallbackStepDefinition) {
     let isValid = valid === 'true';
     expect(this.registerPageObject.formIsValid()).to.become(isValid).and.notify(callback);
   }

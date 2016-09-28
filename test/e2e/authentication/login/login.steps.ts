@@ -14,31 +14,31 @@ class LoginSteps {
   private loginPageObject: LoginPageObject = new LoginPageObject();
 
   @given(/^user clicks the login link$/)
-  private givenUserClicksTheLoginLink(callback: CallbackStepDefinition): void {
+  private givenUserClicksTheLoginLink(callback: CallbackStepDefinition) {
     this.authenticationModule.goToLoginPage();
     callback();
   };
 
   @given(/^'(.*)' is the user email in the login form$/)
-  private givenUserEmail(email: string, callback: CallbackStepDefinition): void {
+  private givenUserEmail(email: string, callback: CallbackStepDefinition) {
     this.loginPageObject.setEmail(email);
     callback();
   };
 
   @given(/^'(.*)' is the user password in the login form$/)
-  private givenPassword(password: string, callback: CallbackStepDefinition): void {
+  private givenPassword(password: string, callback: CallbackStepDefinition) {
     this.loginPageObject.setPassword(password);
     callback();
   };
 
   @when(/^submitting the login form$/)
-  private whenSubmitForm(callback: CallbackStepDefinition): void {
+  private whenSubmitForm(callback: CallbackStepDefinition) {
     this.loginPageObject.submitForm();
     callback();
   };
 
   @then(/^the login form is validated '(.*)'$/)
-  private thenFormIsValidated(valid: string, callback: CallbackStepDefinition): void {
+  private thenFormIsValidated(valid: string, callback: CallbackStepDefinition) {
     let isValid = valid === 'true';
     expect(this.loginPageObject.formIsValid()).to.become(isValid).and.notify(callback);
   };

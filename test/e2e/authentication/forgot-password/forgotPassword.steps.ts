@@ -16,26 +16,26 @@ class ForgotPasswordSteps {
   private forgotPasswordPageObject: ForgotPasswordPageObject = new ForgotPasswordPageObject();
 
   @given(/^user clicks the forgot password link$/)
-  private givenUserClicksTheForgotPasswordLink(callback: CallbackStepDefinition): void {
+  private givenUserClicksTheForgotPasswordLink(callback: CallbackStepDefinition) {
     this.authenticationModule.goToLoginPage();
     this.loginPageObject.navigateToForgotPasswordPage();
     callback();
   };
 
   @given(/^'(.*)' is the user email used in the forgot password form$/)
-  private givenUserEmail(email: string, callback: CallbackStepDefinition): void {
+  private givenUserEmail(email: string, callback: CallbackStepDefinition) {
     this.forgotPasswordPageObject.setEmail(email);
     callback();
   };
 
   @when(/^submitting the forgot password form$/)
-  private whenSubmitForm(callback: CallbackStepDefinition): void {
+  private whenSubmitForm(callback: CallbackStepDefinition) {
     this.forgotPasswordPageObject.submitForm();
     callback();
   };
 
   @then(/^the forgot password form is validated '(.*)'$/)
-  private thenFormIsValidated(valid: string, callback: CallbackStepDefinition): void {
+  private thenFormIsValidated(valid: string, callback: CallbackStepDefinition) {
     let isValid = valid === 'true';
     expect(this.forgotPasswordPageObject.formIsValid()).to.become(isValid).and.notify(callback);
   };

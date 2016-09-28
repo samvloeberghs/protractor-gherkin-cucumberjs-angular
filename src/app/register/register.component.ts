@@ -9,7 +9,7 @@ import { EmailValidator } from '../email-validator';
   styles: [require('./register.component.scss')],
   template: require('./register.component.html')
 })
-export class Register implements OnInit {
+export class RegisterComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;

@@ -6,13 +6,11 @@ if (process.env.TEST_METHOD && process.env.TEST_METHOD === 'cucumber') {
     testmethod = 'cucumber';
 }
 
-console.log("yooo", process.env.TEST_ENV);
 switch (process.env.TEST_ENV) {
     case 'saucelabs':
         exports.config = require('./config/protractor.saucelabs.conf')(testmethod);
         break;
     case 'electron':
-        console.log("yooo", process.env.TEST_ENV);
         exports.config = require('./config/protractor.electron.conf')(testmethod);
         break;
     case 'local':

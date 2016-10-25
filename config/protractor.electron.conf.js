@@ -3,8 +3,6 @@ var helpers = require('./helpers');
 
 module.exports = function (testmethod) {
 
-    console.log(testmethod);
-
     var config = merge(require('./protractor.' + testmethod + '.conf'), {
 
         baseUrl: 'http://localhost:3000',

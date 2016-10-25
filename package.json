@@ -16,9 +16,7 @@
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
     "webdriver-manager": "webdriver-manager",
-    "protractor": "protractor protractor.conf.js",
-    "protractor:saucelabs": "protractor protractor.saucelabs.conf.js",
-    "protractor:electron": "protractor protractor.electron.conf.js",
+
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
     "clean:dist": "npm run rimraf -- dist",
     "preclean:install": "npm run clean",
@@ -37,24 +35,69 @@
     "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
-    "server:dev:hmr": "npm run server:dev -- --hot",
     "server:prod": "http-server dist --cors",
-    "webdriver:update": "npm run webdriver-manager update",
-    "webdriver:start": "npm run webdriver-manager start",
     "lint": "npm run tslint 'src/**/*.ts'",
-    "pree2e": "npm run webdriver:update -- --standalone",
-    "e2e": "npm run protractor",
-    "e2e:saucelabs": "npm run protractor:saucelabs",
-    "e2e:electron": "npm run protractor:electron",
-    "e2e:live": "npm run e2e -- --elementExplorer",
     "test": "node --max-old-space-size=4096 node_modules/karma/bin/karma start",
     "ci": "npm run e2e && npm run test",
-    "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "start": "npm run server:dev",
-    "start:hmr": "npm run server:dev:hmr",
-    "preversion": "npm test",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags"
+
+    "webdriver:update": "npm run webdriver-manager update",
+    "webdriver:start": "npm run webdriver-manager start",
+    "protractor": "npm run e2e",
+    "pree2e": "npm run webdriver:update -- --standalone",
+    "e2e": "better-npm-run e2e:basic:local",
+    "e2e:basic": "better-npm-run e2e:basic:local",
+    "e2e:basic:local": "better-npm-run e2e:basic:local",
+    "e2e:basic:electron": "better-npm-run e2e:basic:electron",
+    "e2e:basic:saucelabs": "better-npm-run e2e:basic:saucelabs",
+    "e2e:cucumber": "better-npm-run e2e:cucumber:local",
+    "e2e:cucumber:local": "better-npm-run e2e:cucumber:local",
+    "e2e:cucumber:electron": "better-npm-run e2e:cucumber:electron",
+    "e2e:cucumber:saucelabs": "better-npm-run e2e:cucumber:saucelabs"
+  },
+  "betterScripts": {
+    "e2e:basic:local": {
+      "command": "protractor",
+      "env": {
+        "TEST_METHOD": "basic",
+        "TEST_ENV": "local"
+      }
+    },
+    "e2e:basic:electron": {
+      "command": "protractor",
+      "env": {
+        "TEST_METHOD": "basic",
+        "TEST_ENV": "electron"
+      }
+    },
+    "e2e:basic:saucelabs": {
+      "command": "protractor",
+      "env": {
+        "TEST_METHOD": "basic",
+        "TEST_ENV": "saucelabs"
+      }
+    },
+    "e2e:cucumber:local": {
+      "command": "protractor",
+      "env": {
+        "TEST_METHOD": "cucumber",
+        "TEST_ENV": "local"
+      }
+    },
+    "e2e:cucumber:electron": {
+      "command": "protractor",
+      "env": {
+        "TEST_METHOD": "cucumber",
+        "TEST_ENV": "electron"
+      }
+    },
+    "e2e:cucumber:saucelabs": {
+      "command": "protractor",
+      "env": {
+        "TEST_METHOD": "cucumber",
+        "TEST_ENV": "saucelabs"
+      }
+    }
   },
   "dependencies": {
     "@angular/common": "2.1.0",

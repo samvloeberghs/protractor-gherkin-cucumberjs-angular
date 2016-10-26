@@ -1,32 +1,6 @@
 import { ForgotPasswordPageObject } from './forgotPassword.page';
 import { AuthenticationPageObject } from '../authentication.page';
-
-let testData = [
-    {
-        input: {
-            email: ''
-        },
-        result: {
-            valid: false
-        }
-    },
-    {
-        input: {
-            email: 'samkwerri.be'
-        },
-        result: {
-            valid: false
-        }
-    },
-    {
-        input: {
-            email: 'sam@kwerri.be'
-        },
-        result: {
-            valid: true
-        }
-    }
-];
+import testData from './data';
 
 describe('forgot password page', function () {
 

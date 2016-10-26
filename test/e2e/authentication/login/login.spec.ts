@@ -1,53 +1,6 @@
 import { LoginPageObject } from './login.page';
 import { AuthenticationPageObject } from '../authentication.page';
-
-let testData = [
-    {
-        input: {
-            email: '',
-            password: ''
-        },
-        result: {
-            valid: false
-        }
-    },
-    {
-        input: {
-            email: '',
-            password: 'thisisavalidpassword'
-        },
-        result: {
-            valid: false
-        }
-    },
-    {
-        input: {
-            email: 'samkwerri.be',
-            password: 'thisisavalidpassword'
-        },
-        result: {
-            valid: false
-        }
-    },
-    {
-        input: {
-            email: 'sam@kwerri.be',
-            password: ''
-        },
-        result: {
-            valid: false
-        }
-    },
-    {
-        input: {
-            email: 'sam@kwerri.be',
-            password: 'thisisavalidpassword'
-        },
-        result: {
-            valid: true
-        }
-    }
-];
+import testData from './data';
 
 describe('login page', function () {
 

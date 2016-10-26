@@ -10,8 +10,8 @@ import { AuthenticationPageObject } from '../authentication.page';
 @binding()
 class LoginSteps {
 
-  private authenticationModule: AuthenticationPageObject = new AuthenticationPageObject();
-  private loginPageObject: LoginPageObject = new LoginPageObject();
+  private authenticationModule = new AuthenticationPageObject();
+  private loginPageObject = new LoginPageObject();
 
   @given(/^user clicks the login link$/)
   private givenUserClicksTheLoginLink(callback: CallbackStepDefinition) {

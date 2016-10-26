@@ -4,6 +4,7 @@ import Promise = webdriver.promise.Promise;
 export class ForgotPasswordPageObject {
 
   private form;
+  private title;
   private emailInput;
   private submitButton;
   private goToLoginLink;
@@ -13,6 +14,7 @@ export class ForgotPasswordPageObject {
 
     // get the relevant elements
     this.form = element(by.id('forgot-password-form'));
+    this.title = element(by.id('forgot-password-title'));
     this.emailInput = this.form.element(by.id('forgot-password-email'));
     this.submitButton = this.form.element(by.id('forgot-password-submit'));
 
@@ -23,6 +25,10 @@ export class ForgotPasswordPageObject {
 
   setEmail(value: string): Promise<void> {
     return this.emailInput.clear().sendKeys(value);
+  }
+
+  getTitle(): Promise<string> {
+    return this.title.getText();
   }
 
   submitForm(): Promise<void> {

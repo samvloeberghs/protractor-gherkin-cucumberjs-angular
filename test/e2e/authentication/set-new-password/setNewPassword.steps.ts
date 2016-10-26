@@ -5,11 +5,13 @@ import { binding, given, when, then } from 'cucumber-tsflow';
 import { CallbackStepDefinition } from 'cucumber';
 
 import { SetNewPasswordPageObject } from './setNewPassword.page';
+import { AuthenticationPageObject } from '../authentication.page';
 
 @binding()
 class SetNewPasswordSteps {
 
-  private setNewPasswordPageObject: SetNewPasswordPageObject = new SetNewPasswordPageObject();
+  private setNewPasswordPageObject = new SetNewPasswordPageObject();
+  private authPageObject = new AuthenticationPageObject();
 
   // the id & nonce in the set new password link
   private currentId: string;
@@ -29,7 +31,7 @@ class SetNewPasswordSteps {
 
   @when(/^using the link to the set new password page$/)
   private whenGetPage(callback: CallbackStepDefinition) {
-    this.setNewPasswordPageObject.getPage(this.currentId, this.currentNonce);
+    this.authPageObject.goToSetNewPasswordPage(this.currentId, this.currentNonce);
     callback();
   };
 
@@ -47,7 +49,7 @@ class SetNewPasswordSteps {
 
   @given(/^user clicks the valid set new password link$/)
   private givenUserClicksTheSetNewPasswordLink(callback: CallbackStepDefinition) {
-    this.setNewPasswordPageObject.getPage('1', '123');
+    this.authPageObject.goToSetNewPasswordPage(this.currentId, this.currentNonce);
     expect(this.setNewPasswordPageObject.hasFormElements()).to.become(true).and.notify(callback);
     //callback();
   };

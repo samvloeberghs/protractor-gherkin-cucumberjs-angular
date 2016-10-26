@@ -11,9 +11,9 @@ import { AuthenticationPageObject } from '../authentication.page';
 @binding()
 class ForgotPasswordSteps {
 
-  private authenticationModule: AuthenticationPageObject = new AuthenticationPageObject();
-  private loginPageObject: LoginPageObject = new LoginPageObject();
-  private forgotPasswordPageObject: ForgotPasswordPageObject = new ForgotPasswordPageObject();
+  private authenticationModule = new AuthenticationPageObject();
+  private loginPageObject = new LoginPageObject();
+  private forgotPasswordPageObject = new ForgotPasswordPageObject();
 
   @given(/^user clicks the forgot password link$/)
   private givenUserClicksTheForgotPasswordLink(callback: CallbackStepDefinition) {

@@ -4,6 +4,7 @@ import Promise = webdriver.promise.Promise;
 export class SetNewPasswordPageObject {
 
   private form;
+  private title;
   private passwordInput;
   private repeatPasswordInput;
   private submitButton;
@@ -14,6 +15,7 @@ export class SetNewPasswordPageObject {
 
     // get the relevant elements
     this.form = element(by.id('set-new-password-form'));
+    this.title = element(by.id('set-new-password-title'));
     this.passwordInput = this.form.element(by.id('set-new-password-password'));
     this.repeatPasswordInput = this.form.element(by.id('set-new-password-repeat-password'));
     this.submitButton = this.form.element(by.id('set-new-password-submit'));
@@ -23,16 +25,16 @@ export class SetNewPasswordPageObject {
 
   }
 
-  getPage(id?: string, nonce?: string): Promise<void> {
-    return browser.get(`set-new-password?id=${id}&nonce=${nonce}`);
-  }
-
   setPassword(value: string): Promise<void> {
     return this.passwordInput.clear().sendKeys(value);
   }
 
   setRepeatPassword(value: string): Promise<void> {
     return this.repeatPasswordInput.clear().sendKeys(value);
+  }
+
+  getTitle(): Promise<string> {
+    return this.title.getText();
   }
 
   submitForm(): Promise<void> {

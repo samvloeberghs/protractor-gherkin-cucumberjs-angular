@@ -49,26 +49,26 @@ let testData = [
     }
 ];
 
-describe('todo App', function () {
+describe('login page', function () {
 
-    let page = new LoginPageObject();
-    let authPage = new AuthenticationPageObject();
+    let pageObject = new LoginPageObject();
+    let authPageObject = new AuthenticationPageObject();
 
     beforeEach(() => {
-        authPage.goToLoginPage();
+        authPageObject.goToLoginPage();
     });
 
     it('should get the login page', () => {
-        expect(page.getTitle()).toEqual('Login');
+        expect(pageObject.getTitle()).toEqual('Login');
     });
 
     testData.forEach((test) => {
 
         it('should validate the login form (' + test.input.email + ',' + test.input.password + ')', () => {
-            page.setEmail(test.input.email);
-            page.setPassword(test.input.password);
-            page.submitForm();
-            expect(page.formIsValid()).toEqual(test.result.valid);
+            pageObject.setEmail(test.input.email);
+            pageObject.setPassword(test.input.password);
+            pageObject.submitForm();
+            expect(pageObject.formIsValid()).toEqual(test.result.valid);
         });
 
     });

@@ -4,6 +4,7 @@ import Promise = webdriver.promise.Promise;
 export class RegisterPageObject {
 
   private form;
+  private title;
   private nameInput;
   private emailInput;
   private passwordInput;
@@ -16,6 +17,7 @@ export class RegisterPageObject {
 
     // get the relevant elements
     this.form = element(by.id('register-form'));
+    this.title = element(by.id('register-title'));
     this.nameInput = this.form.element(by.id('register-name'));
     this.emailInput = this.form.element(by.id('register-email'));
     this.passwordInput = this.form.element(by.id('register-password'));
@@ -41,6 +43,10 @@ export class RegisterPageObject {
 
   setRepeatPassword(value: string): Promise<void> {
     return this.repeatPasswordInput.clear().sendKeys(value);
+  }
+
+  getTitle(): Promise<string> {
+    return this.title.getText();
   }
 
   submitForm(): Promise<void> {

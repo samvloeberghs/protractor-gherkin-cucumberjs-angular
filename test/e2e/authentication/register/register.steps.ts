@@ -11,9 +11,9 @@ import { AuthenticationPageObject } from '../authentication.page';
 @binding()
 class RegisterSteps {
 
-  private authenticationModule: AuthenticationPageObject = new AuthenticationPageObject();
-  private loginPageObject: LoginPageObject = new LoginPageObject();
-  private registerPageObject: RegisterPageObject = new RegisterPageObject();
+  private authenticationModule = new AuthenticationPageObject();
+  private loginPageObject = new LoginPageObject();
+  private registerPageObject = new RegisterPageObject();
 
   @given(/^user clicks the register link$/)
   private givenUserClicksTheLoginLink(callback: CallbackStepDefinition) {

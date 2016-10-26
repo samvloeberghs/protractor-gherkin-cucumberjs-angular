@@ -24,6 +24,5 @@ describe('forgot password page', function () {
         });
 
     });
-
-
+    
 });

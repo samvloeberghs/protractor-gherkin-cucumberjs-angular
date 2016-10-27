@@ -1,0 +1,99 @@
+<div class="container" id="step-two-container">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" id="step-two-page-title">
+                    Speaker registration - step 2/3
+                </h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="alert alert-info">
+                    <p>
+                        In this second step you need to provide more details about your session. Please describe your
+                        session with title and description.
+                    </p>
+                </div>
+
+                <form role="form" novalidate id="step-two-form"
+                      [formGroup]="form" (submit)="submit($event)">
+
+                    <div class="form-group"
+                         [ngClass]="{'has-error': ( submitted && !form.controls.type.valid )}">
+
+                        <div class="input-group">
+                            <label class="input-group-addon" for="step-two-type"><i
+                                    class="glyphicon glyphicon-tag"></i></label>
+                            <select id="step-two-type" type="text" class="form-control"
+                                    name="step-two-type"
+                                    required
+                                    formControlName="type">
+                                <option value="">Select session type</option>
+                                <option value="speaker">Speaker</option>
+                                <option value="workshop">Workshop</option>
+                            </select>
+                        </div>
+
+                        <div class="error-group" *ngIf="( submitted && !form.controls.type.valid )">
+                            <span class="help-block" *ngIf="form.controls.type.hasError('required')">
+                                The session type is required
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group"
+                         [ngClass]="{'has-error': ( submitted && !form.controls.title.valid )}">
+
+                        <div class="input-group">
+                            <label class="input-group-addon" for="step-two-title"><i
+                                    class="glyphicon glyphicon-certificate"></i></label>
+                            <input id="step-two-title" type="text" class="form-control"
+                                   name="step-two-title"
+                                   placeholder="Session title"
+                                   required
+                                   formControlName="title">
+                        </div>
+
+                        <div class="error-group" *ngIf="( submitted && !form.controls.title.valid )">
+                            <span class="help-block" *ngIf="form.controls.title.hasError('required')">
+                                Title of the session is required
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group"
+                         [ngClass]="{'has-error': ( submitted && !form.controls.description.valid )}">
+
+                        <div class="input-group">
+                            <label class="input-group-addon" for="step-two-description"><i
+                                    class="glyphicon glyphicon-align-justify"></i></label>
+                            <textarea id="step-two-description" class="form-control"
+                                      name="step-two-description"
+                                      placeholder="Session/workshop description"
+                                      required
+                                      rows="5"
+                                      formControlName="description"></textarea>
+                        </div>
+
+                        <div class="error-group" *ngIf="( submitted && !form.controls.description.valid )">
+                            <span class="help-block" *ngIf="form.controls.description.hasError('required')">
+                                Description of the session is required
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <button (click)="goBack($event)" class="btn btn-warning" id="step-one-goback">
+                        Go back to step 1
+                    </button>
+                    <button type="submit" class="btn btn-success" id="step-two-submit">Go to step 3</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

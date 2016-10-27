@@ -1,41 +1,43 @@
 hr {
-  margin:{
-    top:10px;
-    bottom:10px;
+  margin: {
+    top: 10px;
+    bottom: 10px;
   }
 }
-a{
-  padding-bottom:3px;
+
+a {
+  padding-bottom: 3px;
   color: #444;
-  border:{
-    bottom:1px dotted #777;
+  border: {
+    bottom: 1px dotted #777;
   }
 
   &:hover,
-  &:active{
-    text:{
-      decoration:none;
+  &:active {
+    text: {
+      decoration: none;
     }
-    color:#222;
-    border:{
-      bottom:1px solid #777;
+    color: #222;
+    border: {
+      bottom: 1px solid #777;
     }
   }
 }
 
 .panel-heading {
   & > div {
-    float:right;
-    font:{
+    float: right;
+    font: {
       size: 80%;
     }
     position: relative;
-    top:-15px
+    top: -15px
   }
 }
-.container{
-  margin:{
-    top:50px;
+
+.container {
+  margin: {
+    top: 50px;
   }
 }
 
@@ -52,8 +54,15 @@ a{
     bottom: 7px;
     left: 15px;
   }
-  margin:{
-    bottom:0;
+  margin: {
+    bottom: 0;
+  }
+}
+
+.panel-body {
+  .alert {
+    margin-bottom: 15px;
+    font-size: 12px;
   }
 }
 
@@ -68,21 +77,21 @@ a{
   margin: {
     bottom: 12px;
   }
-  &:last-child{
-    margin:{
-      bottom:0;
+  &:last-child {
+    margin: {
+      bottom: 0;
     }
 
     & > div {
-      font:{
+      font: {
         size: 85%;
       }
     }
   }
 }
 
-.error-group{
-  margin:{
-    top:12px;
+.error-group {
+  margin: {
+    top: 12px;
   }
 }

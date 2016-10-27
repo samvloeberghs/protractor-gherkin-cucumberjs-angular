@@ -1,5 +1,6 @@
 <div class="container" id="login-container">
     <div class="col-md-4 col-md-offset-4">
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title" id="login-title">
@@ -27,13 +28,13 @@
                         </div>
 
                         <div class="error-group" *ngIf="( submitted && !form.controls.email.valid )">
-              <span class="help-block" *ngIf="form.controls.email.hasError('required')">
-                Your email is required
-              </span>
+                            <span class="help-block" *ngIf="form.controls.email.hasError('required')">
+                            Your email is required
+                            </span>
                             <span class="help-block"
                                   *ngIf="!form.controls.email.hasError('required') && form.controls.email.hasError('invalidEmail')">
-                Your email is invalid
-              </span>
+                                Your email is invalid
+                            </span>
                         </div>
 
                     </div>
@@ -72,8 +73,7 @@
 
                     </div>
                 </form>
-                <div id=""
-                     *ngIf="authenticated">
+                <div *ngIf="authenticated">
 
                     <div class="alert alert-success">
                         You are logged in!
@@ -82,5 +82,10 @@
                 </div>
             </div>
         </div>
+
+        <p id="startspeakerregistrationprocess">
+            <a [routerLink]=" ['/speaker-registration']">Register as speaker</a>
+        </p>
+
     </div>
 </div>

@@ -13,6 +13,9 @@ switch (process.env.TEST_ENV) {
     case 'electron':
         exports.config = require('./config/protractor.electron.conf')(testmethod);
         break;
+    case 'todoappexternal':
+        exports.config = require('./config/protractor.todoappexternal.conf')(testmethod);
+        break;
     case 'local':
     default:
         exports.config = require('./config/protractor.local.conf')(testmethod);

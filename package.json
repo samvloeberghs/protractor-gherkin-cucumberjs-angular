@@ -48,6 +48,7 @@
     "e2e:basic:local": "better-npm-run e2e:basic:local",
     "e2e:basic:electron": "better-npm-run e2e:basic:electron",
     "e2e:basic:saucelabs": "better-npm-run e2e:basic:saucelabs",
+    "e2e:basic:todoapp": "better-npm-run e2e:basic:todoappexternal",
     "e2e:cucumber": "better-npm-run e2e:cucumber:local",
     "e2e:cucumber:local": "better-npm-run e2e:cucumber:local",
     "e2e:cucumber:electron": "better-npm-run e2e:cucumber:electron",
@@ -73,6 +74,13 @@
       "env": {
         "TEST_METHOD": "basic",
         "TEST_ENV": "saucelabs"
+      }
+    },
+    "e2e:basic:todoappexternal": {
+      "command": "protractor",
+      "env": {
+        "TEST_METHOD": "basic",
+        "TEST_ENV": "todoappexternal"
       }
     },
     "e2e:cucumber:local": {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { EmailValidator } from '../../email-validator';
-
 
 @Component({
     selector: 'sv-speaker-registration-step-one',
@@ -15,7 +15,8 @@ export class SpeakerRegistrationStepOneComponent implements OnInit {
     form: FormGroup;
     submitted = false;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -32,10 +33,10 @@ export class SpeakerRegistrationStepOneComponent implements OnInit {
                     EmailValidator.validEmail
                 ])
             ),
-            sessionType: new FormControl(
+            description: new FormControl(
                 '',
                 Validators.required
-            )
+            ),
         });
 
     }
@@ -45,7 +46,8 @@ export class SpeakerRegistrationStepOneComponent implements OnInit {
         this.submitted = true;
 
         if (this.form.valid) {
-            console.log(this.form.value);
+            // store stuff
+            this.router.navigate(['speaker-registration/step-2']);
         }
         event.preventDefault();
 

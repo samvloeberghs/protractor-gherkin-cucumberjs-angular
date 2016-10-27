@@ -27,13 +27,13 @@
                         </div>
 
                         <div class="error-group" *ngIf="( submitted && !form.controls.email.valid )">
-              <span class="help-block" *ngIf="form.controls.email.hasError('required')">
-                Your email is required
-              </span>
+                            <span class="help-block" *ngIf="form.controls.email.hasError('required')">
+                            Your email is required
+                            </span>
                             <span class="help-block"
                                   *ngIf="!form.controls.email.hasError('required') && form.controls.email.hasError('invalidEmail')">
-                Your email is invalid
-              </span>
+                                Your email is invalid
+                            </span>
                         </div>
 
                     </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { SpeakerRegistrationService } from '../speaker-registration.service';
+import { SpeakerRegistrationService, SpeakerRegistrationState } from '../speaker-registration.service';
 
 @Component({
     selector: 'sv-speaker-registration-step-two',
@@ -18,6 +18,7 @@ export class SpeakerRegistrationStepTwoComponent implements OnInit {
     constructor(private fb: FormBuilder,
                 private router: Router,
                 private speakerRegistrationService: SpeakerRegistrationService) {
+
     }
 
     ngOnInit() {
@@ -37,6 +38,10 @@ export class SpeakerRegistrationStepTwoComponent implements OnInit {
             )
         });
 
+        this.speakerRegistrationService.state$.subscribe(
+            (res: SpeakerRegistrationState) => this.form.setValue(res.session)
+        );
+
     }
 
     submit(event: any) {
@@ -44,8 +49,7 @@ export class SpeakerRegistrationStepTwoComponent implements OnInit {
         this.submitted = true;
 
         if (this.form.valid) {
-            console.log(this.form);
-            //this.speakerRegistrationService.setPersonalDetails();
+            this.speakerRegistrationService.setSessionDetails(this.form.value);
             this.router.navigate(['speaker-registration/step-3']);
         }
         event.preventDefault();

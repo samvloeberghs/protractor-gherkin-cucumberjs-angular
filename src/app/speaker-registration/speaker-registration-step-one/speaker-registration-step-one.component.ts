@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { EmailValidator } from '../../email-validator';
-import { SpeakerRegistrationService } from '../speaker-registration.service';
+import { SpeakerRegistrationService, SpeakerRegistrationState } from '../speaker-registration.service';
 
 @Component({
     selector: 'sv-speaker-registration-step-one',
@@ -19,6 +19,7 @@ export class SpeakerRegistrationStepOneComponent implements OnInit {
     constructor(private fb: FormBuilder,
                 private router: Router,
                 private speakerRegistrationService: SpeakerRegistrationService) {
+
     }
 
     ngOnInit() {
@@ -38,8 +39,15 @@ export class SpeakerRegistrationStepOneComponent implements OnInit {
             description: new FormControl(
                 '',
                 Validators.required
-            ),
+            )
         });
+
+        this.speakerRegistrationService.state$.subscribe(
+            (res: SpeakerRegistrationState) => {
+                console.log(res);
+                this.form.setValue(res.personal);
+            }
+        );
 
     }
 
@@ -48,8 +56,7 @@ export class SpeakerRegistrationStepOneComponent implements OnInit {
         this.submitted = true;
 
         if (this.form.valid) {
-            console.log(this.form);
-            //this.speakerRegistrationService.setPersonalDetails();
+            this.speakerRegistrationService.setPersonalDetails(this.form.value);
             this.router.navigate(['speaker-registration/step-2']);
         }
         event.preventDefault();

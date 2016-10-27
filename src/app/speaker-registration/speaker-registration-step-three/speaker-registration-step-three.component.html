@@ -23,15 +23,15 @@
                         <table>
                             <tr>
                                 <th>Name:</th>
-                                <td>{{data.personal.name}}</td>
+                                <td>{{ (data$ | async )?.personal.name}}</td>
                             </tr>
                             <tr>
                                 <th>Email:</th>
-                                <td>{{data.personal.email}}</td>
+                                <td>{{ (data$ | async )?.personal.email}}</td>
                             </tr>
                             <tr>
                                 <th>Description:</th>
-                                <td>{{data.personal.description}}</td>
+                                <td>{{ (data$ | async )?.personal.description}}</td>
                             </tr>
                         </table>
 
@@ -45,15 +45,15 @@
                         <table>
                             <tr>
                                 <th>Type:</th>
-                                <td>{{data.session.type}}</td>
+                                <td>{{ (data$ | async )?.session.type}}</td>
                             </tr>
                             <tr>
                                 <th>Title:</th>
-                                <td>{{data.session.title}}</td>
+                                <td>{{ (data$ | async )?.session.title}}</td>
                             </tr>
                             <tr>
                                 <th>Description:</th>
-                                <td>{{data.session.description}}</td>
+                                <td>{{ (data$ | async )?.session.description}}</td>
                             </tr>
                         </table>
 
@@ -62,6 +62,8 @@
                                 id="step-three-gobacktosteptwo">
                             Edit session details
                         </button>
+
+                        <hr />
 
                         <button (click)="submit($event)" class="btn btn-success" id="step-three-submit">Submit your
                             session!

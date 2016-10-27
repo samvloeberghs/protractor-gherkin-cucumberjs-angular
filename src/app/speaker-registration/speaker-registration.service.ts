@@ -21,7 +21,6 @@ export interface SpeakerRegistrationState {
 @Injectable()
 export class SpeakerRegistrationService {
 
-    state$ = new BehaviorSubject<SpeakerRegistrationState>(this.currentState);
     private defaultState: SpeakerRegistrationState = {
         personal: {
             name: '',
@@ -34,19 +33,24 @@ export class SpeakerRegistrationService {
             description: ''
         }
     };
-    private currentState: SpeakerRegistrationState = this.defaultState;
+    private currentState: SpeakerRegistrationState = Object.assign({}, this.defaultState);
+    private _state$ = new BehaviorSubject<SpeakerRegistrationState>(this.currentState);
 
     constructor() {
     }
 
+    get state$(){
+        return this._state$;
+    }
+
     setPersonalDetails(personal: SpeakerRegistrationPersonal) {
         this.currentState.personal = personal;
-        this.state$.next(this.currentState);
+        this._state$.next(this.currentState);
     }
 
     setSessionDetails(session: SpeakerRegistrationSession) {
         this.currentState.session = session;
-        this.state$.next(this.currentState);
+        this._state$.next(this.currentState);
     }
 
     validatePersonalDetails(): boolean {
@@ -62,8 +66,9 @@ export class SpeakerRegistrationService {
     }
 
     resetState() {
-        this.currentState = this.defaultState;
-        this.state$.next(this.currentState);
+        this.currentState = Object.assign({}, this.defaultState);
+        console.log(this.currentState);
+        this._state$.next(this.currentState);
     }
 
 }

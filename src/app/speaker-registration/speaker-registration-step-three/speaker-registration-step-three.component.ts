@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 
-import { EmailValidator } from '../../email-validator';
 import { SpeakerRegistrationService, SpeakerRegistrationState } from '../speaker-registration.service';
 
 @Component({
@@ -13,15 +12,13 @@ import { SpeakerRegistrationService, SpeakerRegistrationState } from '../speaker
 })
 export class SpeakerRegistrationStepThreeComponent implements OnInit {
 
-    data: SpeakerRegistrationState;
+    data$: Observable<SpeakerRegistrationState>;
     validated: boolean = false;
 
     constructor(private router: Router,
                 private speakerRegistrationService: SpeakerRegistrationService) {
 
-        this.speakerRegistrationService.state$.subscribe(
-            (data: SpeakerRegistrationState) => this.data = data
-        )
+        this.data$ = this.speakerRegistrationService.state$.asObservable();
     }
 
     ngOnInit() {

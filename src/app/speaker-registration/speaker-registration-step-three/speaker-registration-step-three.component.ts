@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { EmailValidator } from '../../email-validator';
+import { SpeakerRegistrationService, SpeakerRegistrationState } from '../speaker-registration.service';
 
 @Component({
     selector: 'sv-speaker-registration-step-three',
@@ -12,45 +13,28 @@ import { EmailValidator } from '../../email-validator';
 })
 export class SpeakerRegistrationStepThreeComponent implements OnInit {
 
-    form: FormGroup;
-    submitted = false;
-    data: Object;
+    data: SpeakerRegistrationState;
+    validated: boolean = false;
 
-    constructor(private fb: FormBuilder,
-                private router: Router) {
+    constructor(private router: Router,
+                private speakerRegistrationService: SpeakerRegistrationService) {
 
+        this.speakerRegistrationService.state$.subscribe(
+            (data: SpeakerRegistrationState) => this.data = data
+        )
     }
 
     ngOnInit() {
-
-        this.form = this.fb.group({
-            name: new FormControl(
-                '',
-                Validators.required
-            ),
-            email: new FormControl(
-                '',
-                Validators.compose([
-                    Validators.required,
-                    EmailValidator.validEmail
-                ])
-            ),
-            sessionType: new FormControl(
-                '',
-                Validators.required
-            )
-        });
 
     }
 
     submit(event: any) {
 
-        this.submitted = true;
-
-        if (this.form.valid) {
-            // store stuff
-            this.router.navigate(['speaker-registration/step-2']);
-        }
+        this.speakerRegistrationService.resetState();
+        this.validated = true;
+        setTimeout(() => {
+            this.router.navigate(['speaker-registration']);
+        }, 5000);
         event.preventDefault();
 
     }

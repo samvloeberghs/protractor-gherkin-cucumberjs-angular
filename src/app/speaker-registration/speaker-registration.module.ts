@@ -4,13 +4,13 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ROUTES, SpeakerRegistrationState } from './';
+import { ROUTES, SpeakerRegistrationService } from './';
 import { SpeakerRegistrationStepOneComponent } from './speaker-registration-step-one';
 import { SpeakerRegistrationStepTwoComponent } from './speaker-registration-step-two';
 import { SpeakerRegistrationStepThreeComponent } from './speaker-registration-step-three';
 
 const APP_PROVIDERS = [
-    SpeakerRegistrationState
+    SpeakerRegistrationService
 ];
 
 @NgModule({

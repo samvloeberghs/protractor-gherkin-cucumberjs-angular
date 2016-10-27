@@ -9,61 +9,74 @@
 
             <div class="panel-body">
 
-                <div class="alert alert-info">
-                    <p>
-                        Please verify your personal & speaker details!
-                    </p>
+                <div *ngIf="!validated">
+                    <div class="alert alert-info">
+                        <p>
+                            Please verify your personal & speaker details!
+                        </p>
+                    </div>
+
+                    <form role="form" novalidate id="step-three-form">
+
+                        <h4>Personal details:</h4>
+
+                        <table>
+                            <tr>
+                                <th>Name:</th>
+                                <td>{{data.personal.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>{{data.personal.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Description:</th>
+                                <td>{{data.personal.description}}</td>
+                            </tr>
+                        </table>
+
+                        <button (click)="goBackToStepOne($event)" class="btn btn-warning"
+                                id="step-three-gobacktostepone">
+                            Edit personal details
+                        </button>
+
+                        <h4>Session details:</h4>
+
+                        <table>
+                            <tr>
+                                <th>Type:</th>
+                                <td>{{data.session.type}}</td>
+                            </tr>
+                            <tr>
+                                <th>Title:</th>
+                                <td>{{data.session.title}}</td>
+                            </tr>
+                            <tr>
+                                <th>Description:</th>
+                                <td>{{data.session.description}}</td>
+                            </tr>
+                        </table>
+
+
+                        <button (click)="goBackToStepTwo($event)" class="btn btn-warning"
+                                id="step-three-gobacktosteptwo">
+                            Edit session details
+                        </button>
+
+                        <button (click)="submit($event)" class="btn btn-success" id="step-three-submit">Submit your
+                            session!
+                        </button>
+
+                    </form>
                 </div>
 
-                <form role="form" novalidate id="step-two-form"
-                      [formGroup]="form" (submit)="submit($event)">
+                <div *ngIf="validated">
 
-                    <h4>Personal details:</h4>
+                    <div class="alert alert-success">
+                        Thanks for registering as a speaker! See you soon :)
+                    </div>
 
-                    <table>
-                        <tr>
-                            <th>Name:</th>
-                            <td>{{data.personal.name}}</td>
-                        </tr>
-                        <tr>
-                            <th>Email:</th>
-                            <td>{{data.personal.email}}</td>
-                        </tr>
-                        <tr>
-                            <th>Description:</th>
-                            <td>{{data.personal.description}}</td>
-                        </tr>
-                    </table>
-
-                    <button (click)="goBackToStepOne($event)" class="btn btn-warning" id="step-three-gobacktostepone">
-                        Edit personal details
-                    </button>
-
-                    <h4>Session details:</h4>
-
-                    <table>
-                        <tr>
-                            <th>Type:</th>
-                            <td>{{data.session.type}}</td>
-                        </tr>
-                        <tr>
-                            <th>Title:</th>
-                            <td>{{data.session.title}}</td>
-                        </tr>
-                        <tr>
-                            <th>Description:</th>
-                            <td>{{data.session.description}}</td>
-                        </tr>
-                    </table>
-
-
-                    <button (click)="goBackToStepTwo($event)" class="btn btn-warning" id="step-three-gobacktosteptwo">
-                        Edit session details
-                    </button>
-
-                    <button type="submit" class="btn btn-success" id="step-three-submit">Submit your session!</button>
-
-                </form>
+                </div>
 
             </div>
         </div>

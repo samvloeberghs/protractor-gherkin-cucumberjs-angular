@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { SpeakerRegistrationService } from '../speaker-registration.service';
+
 @Component({
     selector: 'sv-speaker-registration-step-two',
     providers: [],
@@ -14,7 +16,8 @@ export class SpeakerRegistrationStepTwoComponent implements OnInit {
     submitted = false;
 
     constructor(private fb: FormBuilder,
-                private router: Router) {
+                private router: Router,
+                private speakerRegistrationService: SpeakerRegistrationService) {
     }
 
     ngOnInit() {
@@ -41,7 +44,8 @@ export class SpeakerRegistrationStepTwoComponent implements OnInit {
         this.submitted = true;
 
         if (this.form.valid) {
-            // store stuff
+            console.log(this.form);
+            //this.speakerRegistrationService.setPersonalDetails();
             this.router.navigate(['speaker-registration/step-3']);
         }
         event.preventDefault();

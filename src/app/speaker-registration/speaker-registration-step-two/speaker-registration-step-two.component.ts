@@ -56,7 +56,7 @@ export class SpeakerRegistrationStepTwoComponent implements OnInit {
 
     }
 
-    goBack(event: any){
+    goBack(event: any) {
         this.router.navigate(['speaker-registration/step-1']);
         event.preventDefault();
     }

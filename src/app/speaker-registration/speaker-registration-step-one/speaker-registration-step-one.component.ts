@@ -43,10 +43,7 @@ export class SpeakerRegistrationStepOneComponent implements OnInit {
         });
 
         this.speakerRegistrationService.state$.subscribe(
-            (res: SpeakerRegistrationState) => {
-                console.log(res);
-                this.form.setValue(res.personal);
-            }
+            (res: SpeakerRegistrationState) =>  this.form.setValue(res.personal)
         );
 
     }

@@ -50,7 +50,6 @@ export class SetNewPasswordComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
-      console.log(this.form.value);
       this.newPasswordSet = true;
       this.navigateToLogin();
     }

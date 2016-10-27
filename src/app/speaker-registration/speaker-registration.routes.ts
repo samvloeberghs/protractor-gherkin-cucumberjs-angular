@@ -8,21 +8,21 @@ import { SpeakerRegistrationStepThreeComponent, StepThreeGuard } from './speaker
 export const ROUTES: Routes = [
     {
         path: 'speaker-registration', component: SpeakerRegistrationStepOneComponent,
-        children: [
-            {
-                path: 'step-1',
-                component: SpeakerRegistrationStepOneComponent
-            },
-            {
-                path: 'step-2',
-                component: SpeakerRegistrationStepTwoComponent,
-                canActivate: [StepTwoGuard]
-            },
-            {
-                path: 'step-3',
-                component: SpeakerRegistrationStepThreeComponent,
-                canActivate: [StepThreeGuard]
-            }
-        ]
+    },
+    {
+        path: 'speaker-registration/step-1',
+        component: SpeakerRegistrationStepOneComponent
+    },
+    {
+        path: 'speaker-registration/step-2',
+        component: SpeakerRegistrationStepTwoComponent,
+        canActivate: [StepTwoGuard]
+    },
+    {
+        path: 'speaker-registration/step-3',
+        component: SpeakerRegistrationStepThreeComponent,
+        canActivate: [StepThreeGuard]
     }
+
+
 ];

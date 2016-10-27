@@ -54,20 +54,19 @@ export class SpeakerRegistrationService {
     }
 
     validatePersonalDetails(): boolean {
-        return this.currentState.personal.name === ''
-            || this.currentState.personal.email === ''
-            || this.currentState.personal.description === '';
+        return this.currentState.personal.name !== ''
+            && this.currentState.personal.email !== ''
+            && this.currentState.personal.description !== '';
     }
 
     validateSessionDetails(): boolean {
-        return this.currentState.session.type === ''
-            || this.currentState.session.title === ''
-            || this.currentState.personal.description === '';
+        return this.currentState.session.type !== ''
+            && this.currentState.session.title !== ''
+            && this.currentState.personal.description !== '';
     }
 
     resetState() {
         this.currentState = Object.assign({}, this.defaultState);
-        console.log(this.currentState);
         this._state$.next(this.currentState);
     }
 

@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
-      console.log(this.form.value);
       this.authenticated = true;
     }
     event.preventDefault();

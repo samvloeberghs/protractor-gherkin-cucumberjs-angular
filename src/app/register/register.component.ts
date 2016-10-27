@@ -56,7 +56,6 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
-      console.log(this.form.value);
       this.registered = true;
     }
     event.preventDefault();

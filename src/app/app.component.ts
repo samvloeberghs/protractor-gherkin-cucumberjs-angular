@@ -16,11 +16,11 @@ import { AppState } from './app.service';
 
 export class AppComponent implements OnInit {
 
-  constructor(public appState: AppState) {
+  constructor(private appState: AppState) {
   }
 
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+
   }
 
 }

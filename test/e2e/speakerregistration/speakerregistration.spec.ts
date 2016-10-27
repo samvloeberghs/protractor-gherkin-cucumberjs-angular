@@ -1,16 +1,21 @@
-import { TodoPageObject } from './todo.page';
+import { StepOnePageObject } from './stepone.page';
+import { StepTwoPageObject } from './steptwo.page';
+import { StepThreePageObject } from './stepthree.page';
+
 import testData from './data';
 
 describe('login page', function () {
 
-    let pageObject = new TodoPageObject();
+    let stepOnePageObject = new StepOnePageObject();
+    let stepTwoPageObject = new StepTwoPageObject();
+    let stepThreePageObject = new StepThreePageObject();
 
     beforeEach(() => {
-        pageObject.openPage();
+        //pageObject.openPage();
     });
 
     it('should get the login page', () => {
-        expect(pageObject.getTitle()).toEqual('Login');
+        //expect(pageObject.getTitle()).toEqual('Login');
     });
 
 

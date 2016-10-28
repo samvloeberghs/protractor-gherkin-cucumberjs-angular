@@ -20,6 +20,15 @@ export class StepOnePageObject {
         // return browser.get('/speaker-registration/step-1');
     }
 
+    goToStepTwoPage() {
+      this.setName("abc");
+      this.setEmail("abc@cde.com");
+      this.setDescription("desc");
+      this.submitForm();
+      browser.sleep(100);
+      // expect(stepOnePageObject.formToBeValid()).toEqual(test.result.valid);
+    }
+
     getCurrentUrl() {
         return browser.getCurrentUrl();
     }

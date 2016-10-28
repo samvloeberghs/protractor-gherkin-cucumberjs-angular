@@ -5,6 +5,10 @@ module.exports = function (testmethod) {
 
     var config = merge(require('./protractor.' + testmethod + '.conf'), {
 
+        specs: [
+            'test/e2e/speakerregistration/**/*.spec.ts'
+        ],
+
         baseUrl: 'http://localhost:3000/',
         directConnect: true,
 
@@ -16,6 +20,8 @@ module.exports = function (testmethod) {
         }
 
     });
+
+    console.log(config);
 
     return config;
 

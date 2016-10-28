@@ -21,6 +21,8 @@ module.exports = function (testmethod) {
 
     });
 
+    console.log(config);
+
     return config;
 
 };

@@ -41,7 +41,8 @@ let testData = [
             password: 'thisisavalidpassword'
         },
         result: {
-            valid: true
+            valid: true,
+            message: ''
         }
     }
 ];

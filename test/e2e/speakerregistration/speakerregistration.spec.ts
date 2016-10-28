@@ -58,7 +58,20 @@ describe('speaker registration section', function () {
 
         expect(stepOnePageObject.getCurrentUrl()).toEqual(browser.baseUrl + 'speaker-registration/step-2');
 
+        testDataStepTwo.forEach((test) => {
+
+            console.log('should validate the form with ('
+                + test.input.type + ',' + test.input.title + ',' + test.input.description
+                + ') as ' + test.result.valid)
+
+            stepTwoPageObject.setElement(test.input.title,test.input.type, test.input.description);
+
+            expect(stepOnePageObject.formToBeValid()).toEqual(test.result.valid);
+
+        });
+
     });
+
 
 
 });

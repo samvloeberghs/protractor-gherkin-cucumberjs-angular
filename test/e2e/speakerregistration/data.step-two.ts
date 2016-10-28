@@ -16,37 +16,6 @@ let testData = [
             title: '',
             description: ''
         }
-    }),
-    Object.assign({}, baseTestObject, {
-        input: {
-            type: '',
-            title: '',
-            description: ''
-        }
-    }),
-    Object.assign({}, baseTestObject, {
-        input: {
-            type: '',
-            title: '',
-            description: ''
-        }
-    }),
-    Object.assign({}, baseTestObject, {
-        input: {
-            type: '',
-            title: '',
-            description: ''
-        }
-    }),
-    Object.assign({}, baseTestObject, {
-        input: {
-            type: '',
-            title: '',
-            description: ''
-        },
-        result: {
-            valid: true
-        }
     })
 ];
 export default testData;

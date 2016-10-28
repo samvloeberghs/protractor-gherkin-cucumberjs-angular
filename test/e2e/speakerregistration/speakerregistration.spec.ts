@@ -8,38 +8,20 @@ import testData from './data';
 
 describe('speaker registration section', function () {
 
-    let stepOnePageObject = new StepOnePageObject();
-    let stepTwoPageObject = new StepTwoPageObject();
+    let stepOnePageObject   = new StepOnePageObject();
+    let stepTwoPageObject   = new StepTwoPageObject();
     let stepThreePageObject = new StepThreePageObject();
 
     beforeEach(() => {
         stepOnePageObject.goToStepOnePage();
+        stepOnePageObject.goToStepTwoPage();
     });
 
-    it('should go to the first step of speaker registration', () => {
-        expect(stepOnePageObject.getCurrentUrl()).toEqual(browser.baseUrl + 'speaker-registration');
-        //expect(stepOnePageObject.getTitle()).toEqual('');
-    });
-
-    testData.forEach((test) => {
-
-        it('should validate the form with ('
-            + test.input.name + ',' + test.input.name + ',' + test.input.description
-            + ') as ' + test.result.valid, () => {
-
-            stepOnePageObject.setName(test.input.name);
-            browser.sleep(1000);
-            stepOnePageObject.setEmail(test.input.email);
-            browser.sleep(1000);
-            stepOnePageObject.setDescription(test.input.description);
-            browser.sleep(1000);
-            stepOnePageObject.submitForm();
-            browser.sleep(1000);
-
-            expect(stepOnePageObject.formToBeValid()).toEqual(test.result.valid);
-
-        });
-
+    // it('should go to the first step of speaker registration', () => {
+    //     expect(stepOnePageObject.getCurrentUrl()).toEqual(browser.baseUrl + 'speaker-registration');
+    // });
+    it('should be in step 2 url', () => {
+        expect(stepOnePageObject.getCurrentUrl()).toEqual(browser.baseUrl + 'speaker-registration/step-2');
     });
 
 });

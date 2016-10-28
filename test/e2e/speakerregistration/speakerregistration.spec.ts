@@ -21,17 +21,24 @@ describe('speaker registration section', function () {
         //expect(stepOnePageObject.getTitle()).toEqual('');
     });
 
-    it('should validate the form with ("","","") as invalid', () => {
+    testData.forEach((test) => {
 
-        let name = 'Sam', email = 'sam@kwerri.be', description = 'full stack dev';
-        let state = true;
+        it('should validate the form with ('
+            + test.input.name + ',' + test.input.name + ',' + test.input.description
+            + ') as ' + test.result.valid, () => {
 
-        stepOnePageObject.setName(name);
-        stepOnePageObject.setEmail(email);
-        stepOnePageObject.setDescription(description);
-        stepOnePageObject.submitForm();
+            stepOnePageObject.setName(test.input.name);
+            browser.sleep(1000);
+            stepOnePageObject.setEmail(test.input.email);
+            browser.sleep(1000);
+            stepOnePageObject.setDescription(test.input.description);
+            browser.sleep(1000);
+            stepOnePageObject.submitForm();
+            browser.sleep(1000);
 
-        expect(stepOnePageObject.formToBeValid()).toEqual(!state);
+            expect(stepOnePageObject.formToBeValid()).toEqual(test.result.valid);
+
+        });
 
     });
 

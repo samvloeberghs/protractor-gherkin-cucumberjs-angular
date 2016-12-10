@@ -126,6 +126,8 @@
     "@types/hammerjs": "^2.0.32",
     "@types/jasmine": "^2.2.33",
     "@types/node": "^6.0.38",
+    "@types/source-map": "0.5.0",
+    "@types/uglify-js": "2.6.28",
     "@types/webpack": "^1.12.34",
     "angular2-hmr": "^0.8.1",
     "autoprefixer": "^6.3.6",

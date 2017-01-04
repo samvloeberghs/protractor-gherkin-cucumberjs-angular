@@ -1,5 +1,5 @@
 import { browser, element, by, protractor, ElementArrayFinder } from 'protractor';
-import Promise = webdriver.promise.Promise;
+import { promise as wdpromise } from 'selenium-webdriver';
 
 export class SetNewPasswordPageObject {
 
@@ -25,35 +25,35 @@ export class SetNewPasswordPageObject {
 
   }
 
-  setPassword(value: string): Promise<void> {
+  setPassword(value: string): wdpromise.Promise<void> {
     return this.passwordInput.clear().sendKeys(value);
   }
 
-  setRepeatPassword(value: string): Promise<void> {
+  setRepeatPassword(value: string): wdpromise.Promise<void> {
     return this.repeatPasswordInput.clear().sendKeys(value);
   }
 
-  getTitle(): Promise<string> {
+  getTitle(): wdpromise.Promise<string> {
     return this.title.getText();
   }
 
-  submitForm(): Promise<void> {
+  submitForm(): wdpromise.Promise<void> {
     return this.submitButton.sendKeys(protractor.Key.ENTER);
   }
 
-  hasAlertMessages(): Promise<boolean> {
+  hasAlertMessages(): wdpromise.Promise<boolean> {
     return this.getAllAlerts().count().then(value => {
       return value > 0;
     });
   }
 
-  hasFormElements(): Promise<boolean> {
+  hasFormElements(): wdpromise.Promise<boolean> {
     return this.getAllFormElements().count().then(value => {
       return value > 0;
     });
   }
 
-  formIsValid(): Promise<boolean> {
+  formIsValid(): wdpromise.Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });

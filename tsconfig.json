@@ -14,6 +14,7 @@
       "es6"
     ],
     "types": [
+      "selenium-webdriver",
       "hammerjs",
       "jasmine",
       "node",

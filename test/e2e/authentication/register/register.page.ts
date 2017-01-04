@@ -1,5 +1,5 @@
 import { element, by, protractor, ElementArrayFinder } from 'protractor';
-import Promise = webdriver.promise.Promise;
+import { promise as wdpromise } from 'selenium-webdriver';
 
 export class RegisterPageObject {
 
@@ -29,31 +29,31 @@ export class RegisterPageObject {
 
   }
 
-  setName(value: string): Promise<void> {
+  setName(value: string): wdpromise.Promise<void> {
     return this.nameInput.clear().sendKeys(value);
   }
 
-  setEmail(value: string): Promise<void> {
+  setEmail(value: string): wdpromise.Promise<void> {
     return this.emailInput.clear().sendKeys(value);
   }
 
-  setPassword(value: string): Promise<void> {
+  setPassword(value: string): wdpromise.Promise<void> {
     return this.passwordInput.clear().sendKeys(value);
   }
 
-  setRepeatPassword(value: string): Promise<void> {
+  setRepeatPassword(value: string): wdpromise.Promise<void> {
     return this.repeatPasswordInput.clear().sendKeys(value);
   }
 
-  getTitle(): Promise<string> {
+  getTitle(): wdpromise.Promise<string> {
     return this.title.getText();
   }
 
-  submitForm(): Promise<void> {
+  submitForm(): wdpromise.Promise<void> {
     return this.submitButton.sendKeys(protractor.Key.ENTER);
   }
 
-  formIsValid(): Promise<boolean> {
+  formIsValid(): wdpromise.Promise<boolean> {
     return this.getAllErrorMessages().count().then(value => {
       return value === 0;
     });

@@ -1,5 +1,5 @@
 import { browser, element, by, protractor, ElementArrayFinder } from 'protractor';
-import Promise = webdriver.promise.Promise;
+import { promise as wdpromise } from 'selenium-webdriver';
 
 export class StepOnePageObject {
 
